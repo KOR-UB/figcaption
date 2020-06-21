@@ -1,0 +1,325 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+}
+body.error-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.return-page {
+  font-size: 2em;
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 5px 10px;
+  box-shadow: 5px 10px 3px 0 rgba(0, 0, 0, 0.301);
+}
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: #fff;
+  transition: 0.7s;
+}
+.login-page.active {
+  transform: translate3d(0, -100%, 0);
+}
+.login-page.sign-up-check .login-form,
+.login-page .sign-up-form,
+.login-page.sign-up-check .sign-up,
+.login-page .return-login-form {
+  display: none;
+}
+.login-page.sign-up-check .sign-up-form,
+.login-page.sign-up-check .return-login-form{
+  display: block;
+}
+.login-page .login-title{
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 300 bold;
+  margin: 15% 0;
+  font-family: Lobster;
+}
+.login-page input,
+.login-page button {
+  width: 300px;
+  display: block;
+  border: 2px solid rgb(190, 190, 190);
+  border-radius: 5px;
+  margin: 7px auto;
+}
+.login-page input {
+  padding: 5px 20px;
+}
+.login-page input[type="password"] {
+  margin-bottom: 14px;
+}
+.login-page button {
+  text-align: center;
+  height: 30px;
+  background: #fff;
+  border-color: skyblue;
+  color: skyblue;
+}
+.login-page .sign-in,
+.login-page .sign-up-check{
+  background: skyblue;
+  color: #fff;
+}
+.page-load {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-load .loader
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    filter: url(#load-go);
+}
+.page-load svg
+{
+    width: 0;
+    height: 0;
+}
+.page-load .loader span
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    animation: loadingAnim 1s ease-in-out infinite;
+    animation-delay: calc(0.05s * var(--i));
+}
+.page-load .loader span::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #69dceb;
+    background: linear-gradient(#f13070, #f1f1f1,  #03f4b8);
+}
+@keyframes loadingAnim
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    50%, 100%
+    {
+        transform: rotate(360deg);
+    }
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+header {
+  overflow-x: hidden;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #aaa;
+  padding: 5px 20px;
+}
+header .cam-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+header .cam-logo h1 {
+  display: inline-block;
+  font-size: 1.2em;
+}
+
+header .cam-logo label {
+  display: inline-block;
+  margin-right: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+header button {
+  width: 22px;
+  height: 22px;
+}
+
+svg {
+  position: relative;
+}
+
+.create-post {
+  position: fixed;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-size: 2em;
+  color: #1a777a;
+  box-shadow: 0px 6px 15px 1px rgba(0, 0, 0, 0.452);
+  -webkit-box-reflect: below 2px linear-gradient(transparent,transparent,rgba(0,0,0,0.1));
+}
+.post-container {
+  width: 100%;
+  /* min-height: 500vh; */
+  overflow: hidden;
+}
+.post-container .post-card {
+  width: 100%;
+  border-top: 1px solid #a0a0a0;
+  border-bottom: 1px solid #a0a0a0;
+}
+.post-container .post-card .post-header {
+  width: 100%;
+  height: 10vh;
+  padding: 14px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.post-container .post-card .post-imgbox {
+  position: relative;
+  width: 300%;
+  max-height: 70vh;
+  display: flex;
+
+}
+.post-container .post-card .post-imgbox img {
+  object-fit: cover;
+  width: 33.3333%;
+  min-height: 360px;
+  max-height: 450px;
+}
+.post-container .post-card .post-content {
+  width: 100%;
+  padding: 6px 14px 14px;
+}
+.post-container .post-card .post-content .post-icon-container {
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.post-container .post-card .post-content .post-text-container .heart-text{
+  margin: 5px 0;
+}
+.hash {
+  color: #17395a;
+}
+.profile {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+.count,
+.nick {
+  font-weight: bold;
+}
+.icon-heart
+{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.3333%;
+    height: 100%;
+}
+.icon-heart path
+{
+    fill: transparent;
+    stroke-width: 10;
+    stroke: #ed4956;
+}
+.icon-heart path
+{
+    stroke-dasharray: 1560;
+    stroke-dashoffset: 1560;
+}
+.icon-heart.active{
+  display: block;
+}
+.icon-heart.active path
+{
+    transform-origin: center;
+    animation: anim-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+}
+.heart.active {
+  fill: #ed4956;
+  animation: active-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+}
+@keyframes active-heart {
+  0% {
+    transform: scale3d(1.5, 1.5, 0);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes anim-heart
+{
+    0%
+    {
+        transform: scale3d(1, 1, 0);
+        stroke-dashoffset: 1560;
+    }
+    80%
+    {
+        transform: scale3d(0.3, 0.3, 0);
+        stroke-dashoffset: 0;
+        fill: transparent;
+        stroke: #edd449;
+        stroke-width: 100;
+    }
+    90% {
+      stroke: rgb(255, 207, 195);
+    }
+    100% {
+      transform: scale3d(0.5, 0.5, 0);
+      fill: #ed4956;
+    }
+}
+.plus-text {
+  color: rgb(109, 109, 109);
+  font-weight: normal;
+  cursor: pointer;
+}
+.long-text {
+  overflow: hidden;
+  height: 0;
+  transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
