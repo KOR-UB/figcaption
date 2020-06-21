@@ -27,8 +27,14 @@ body.error-login {
   z-index: 100;
   background: #fff;
   transition: 0.7s;
+  transition-delay: 1s;
+  transition-property: transform;
 }
 .login-page.active {
+  display: grid;
+  place-items: center;
+  font-size: 3em;
+  font-weight: bold;
   transform: translate3d(0, -100%, 0);
 }
 .login-page.sign-up-check .login-form,
@@ -64,16 +70,44 @@ body.error-login {
   margin-bottom: 14px;
 }
 .login-page button {
+  position: relative;
   text-align: center;
   height: 30px;
   background: #fff;
   border-color: skyblue;
   color: skyblue;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.login-page .sign-up-check::before,
+.login-page .sign-in::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transition: 0.5s;
+}
+.return-login-form:hover,
+.login-page .sign-up:hover {
+  box-shadow: 0px 5px 5px 2px rgba(119, 235, 255, 0.2);
+}
+.login-page .sign-up-check:hover::before,
+.login-page .sign-in:hover::before {
+  left: 100%;
 }
 .login-page .sign-in,
 .login-page .sign-up-check{
+  position: relative;
   background: skyblue;
   color: #fff;
+}
+.login-page .sign-in:hover,
+.login-page .sign-up-check:hover {
+  background: rgb(48, 124, 185);
 }
 .page-load {
   position: fixed;
@@ -174,6 +208,7 @@ header button {
 
 svg {
   position: relative;
+  cursor: pointer;
 }
 
 .create-post {

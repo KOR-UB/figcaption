@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./css/header.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="../dist/js/bundle.js" defer></script>
+  <script defer src="./dist/js/bundle.js"></script>
   <title>figcaption</title>
 </head>
 
@@ -39,13 +39,13 @@
   </div>
   <div class="login-page">
     <p class="login-title">figcaption</p>
-    <form class="login-form"> 
+    <form class="login-form" method="POST"> 
       <input type="email" name="email" placeholder="이메일을 입력해 주세요" required  autofocus>
       <input type="password" name="password" placeholder="비밀번호를 입력해 주세요" minlength="8" maxlength="12" required>
       <button class="sign-in">로그인</button>
     </form>
     <button class="sign-up">회원가입</button>
-    <form class="sign-up-form">
+    <form class="sign-up-form" method="POST">
       <input type="email" name="email"placeholder="이메일 주소" required  autofocus>
       <input type="text" name="name" placeholder="이름" required>
       <input type="text" name="nickname" placeholder="닉네임" required>
@@ -126,12 +126,13 @@
       </label>
     </div>
   </main>
-  <script src="./js/login.js"></script>
   <script>
     setTimeout(() => {
       document.querySelector(".page-load").remove();
     }, 1000);
   </script>
+  <!-- <script src="./js/login.js"></script>
+  <script src="./js/feed.js"></script> -->
 </body>
 
 </html>

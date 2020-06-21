@@ -1,36 +1,40 @@
 {
-  "userDatas": [{
-    "id": 0,
-    "email": "emaiL@naver.com",
-    "password": "voTmdnjem12#",
-    "userName": "윤유비",
-    "nickName": "ub",
-    "loginCheck": false,
-    "boardsCount": 0,
-    "marksCount": 0,
-    "boards": [{
+  "userDatas": [
+    {
       "id": 0,
-      "likeCount": 0,
-      "likeCheck": false,
-      "markCheck": false, 
-      "content": "lorem", 
-      "imgList": [ 
-        {    
+      "email": "yyb97@naver.com",
+      "password": "voTmdnjem12#",
+      "userName": "윤유비",
+      "nickName": "ub",
+      "loginCheck": true,
+      "boardsCount": 0,
+      "marksCount": 0,
+      "boards": [
+        {
           "id": 0,
-          "src": "base64 img url"
-        }
-      ],
-      "hashList": [
-        { 
-          "id": 0,
-          "value": "#abcd"
+          "likeCount": 0,
+          "likeCheck": false,
+          "markCheck": false,
+          "content": "lorem",
+          "imgList": [
+            {
+              "id": 0,
+              "src": "base64 img url"
+            }
+          ],
+          "hashList": [
+            {
+              "id": 0,
+              "value": "#abcd"
+            }
+          ]
         }
       ]
-    }]
-  }],
+    }
+  ],
   "hashTags": [
     {
-      "id":0,
+      "id": 0,
       "value": "#abcd"
     }
   ]
