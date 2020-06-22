@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./css/header.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script defer src="./dist/js/bundle.js"></script>
+  <!-- <script defer src="./dist/js/bundle.js"></script> -->
+  <script src="js/login.js" defer></script>
+  <script src="js/feed.js" defer></script>
   <title>figcaption</title>
 </head>
 
@@ -39,7 +41,7 @@
   </div>
   <div class="login-page">
     <p class="login-title">figcaption</p>
-    <form class="login-form" method="POST"> 
+    <form class="login-form" method="dialog"> 
       <input type="email" name="email" placeholder="이메일을 입력해 주세요" required  autofocus>
       <input type="password" name="password" placeholder="비밀번호를 입력해 주세요" minlength="8" maxlength="12" required>
       <button class="sign-in">로그인</button>
@@ -84,7 +86,9 @@
           <p class="post-nickname">figure</p>
         </div>
         <div class="post-imgbox">
-          <img src="./img/austria.jpg" alt="">
+          <img class="post-img" src="./img/austria.jpg" alt="">
+          <img class="post-img" src="./img/brand1.jpg" alt="">
+          <img class="post-img" src="./img/joker.png" alt="">
         </div>
         <div class="post-content">
           <div class="post-icon-container">

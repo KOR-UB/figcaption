@@ -1,5 +1,6 @@
+// import feedInit from './feed';
 let userInfo; //유저 정보가 바뀔때 그 정보를 재할당 해주세요~
-//예를 들어 좋아요를 누를 때, 북마크를 누를 때, 게시글을 작성할 때, 로그인을 했을 때 등등 데이터베이스에 요청을 보낸 후 재할당 해 주세요! 24~27번 줄을 참고하셔도 좋아요!
+//예를 들어 좋아요를 누를 때, 북마크를 누를 때, 게시글을 작성할 때, 로그인을 했을 때 등등 데이터베이스에 요청을 보낸 후 재할당 해 주세요! 26~29번 줄을 참고하셔도 좋아요!
 function loginDomNodeSettings() {
   const $loginPage = document.querySelector('.login-page');
   const $loginForm = $loginPage.querySelector('.login-form');
@@ -8,6 +9,7 @@ function loginDomNodeSettings() {
   const $returnLoginForm = $loginPage.querySelector('.return-login-form');
 
   function removeLoginPage(delay) {
+    // feedInit();
     $loginPage.style.transitionDelay = delay + 's';
     $loginPage.classList.add('active');
     $loginPage.innerHTML = '로그인 성공!'
@@ -77,7 +79,7 @@ function loginDomNodeSettings() {
 function loginInit() {
   loginDomNodeSettings();
 }
-export default function userInfoconnect() {
-  return userInfo;
-}
+// export default function userInfoconnect() {
+//   return userInfo;
+// }
 loginInit();

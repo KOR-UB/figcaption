@@ -248,10 +248,14 @@ svg {
 }
 .post-container .post-card .post-imgbox {
   position: relative;
+  left: 0;
   width: 300%;
   max-height: 70vh;
   display: flex;
-
+  transition: 1.5s;
+}
+.post-container .post-card .post-imgbox:hover {
+  left: -200%;
 }
 .post-container .post-card .post-imgbox img {
   object-fit: cover;

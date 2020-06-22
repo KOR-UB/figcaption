@@ -1,14 +1,16 @@
-import userInfoConnect from './login';
-let user;
+// import userInfoConnect from './login';
+// let userInfo;
+let startPos;
+let changePos
 function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
   function touchHandler(e) {
-    console.log(e);
-    user = userInfoConnect();
-    console.log(user);
-    switch (e.target) {
-      
+    if(e.target.matches($postContainer.classList)) return;
+    switch (e.target.className) {
+      case 'post-img':
+        console.log('이미지 클릭 됨');
+      break;
     }
   }
   function feedEventBinds() {
@@ -18,7 +20,10 @@ function feedDomNodeSettings() {
 }
 function postRender() {
 }
-export function feedInit() {
+// export default 
+function feedInit() {
+  // userInfo = userInfoConnect();
+  // console.log(userInfo);
   feedDomNodeSettings();
   postRender();
 }
