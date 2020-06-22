@@ -1,14 +1,26 @@
+/* eslint-disable no-case-declarations */
 // import userInfoConnect from './login';
 
+let slidePos = 0;
 function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
   function touchHandler(e) {
     if (e.target.matches($postContainer.classList)) return;
-    switch (e.target.classList) {
+    switch (e.target.className) {
       case 'post-img':
-        console.log('이미지 클릭 됨');
-        break;
+        console.log(e);
+        const $parent = e.target.parentNode;
+        $parent.parentNode.querySelector(".active").classList.remove("active");
+        $parent.parentNode.classList
+        if(e.clientX < e.target.offsetWidth / 2) {
+          if($parent.style.left === '0%') return;
+          $parent.style.left = `${++slidePos * 100}%`;
+        } else {
+          if($parent.style.left === '-200%') return;
+          $parent.style.left = `${--slidePos * 100}%`;
+        }
+      break;
     }
   }
 
