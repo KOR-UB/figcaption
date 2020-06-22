@@ -1,5 +1,5 @@
 // import userInfoConnect from './login';
-// let userInfo;
+
 function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
@@ -17,6 +17,7 @@ function feedDomNodeSettings() {
   feedEventBinds();
 }
 function postRender() {
+  
 }
 // export default 
 function feedInit() {
