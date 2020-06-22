@@ -61,7 +61,7 @@ function loginDomNodeSettings() {
       } else {
         keyPass();
       }
-      // removeLoginPage();
+      removeLoginPage();
     }
   }
 

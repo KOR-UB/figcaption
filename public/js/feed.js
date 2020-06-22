@@ -4,20 +4,22 @@ function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
   function touchHandler(e) {
-    if(e.target.matches($postContainer.classList)) return;
+    if (e.target.matches($postContainer.classList)) return;
     switch (e.target.classList) {
       case 'post-img':
         console.log('이미지 클릭 됨');
-      break;
+        break;
     }
   }
+
   function feedEventBinds() {
     $postContainer.addEventListener('click', touchHandler);
   }
   feedEventBinds();
 }
+
 function postRender() {
-  
+
 }
 // export default 
 function feedInit() {

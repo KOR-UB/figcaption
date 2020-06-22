@@ -1,5 +1,7 @@
-const $header = document.querySelector("header");
-const $main = document.querySelector("main");
+const $header = document.querySelector('header');
+const $main = document.querySelector('main');
+const $postAdd = document.querySelector('.post-add');
+const $post = document.querySelector('.post');
 
 function readURL(input) {
   if (input.files && input.files[0]) {
@@ -10,6 +12,10 @@ function readURL(input) {
     }
     reader.readAsDataURL(input.files[0]);
   }
+}
+$postAdd.onclick = () => {
+  console.log('hi');
+  $post.classList.toggle('post-active')
 }
 // export function bindEvent() {
 //   const $inputFile = $main.querySelector(".input-file");
