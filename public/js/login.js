@@ -4,8 +4,11 @@ let userInfo; //유저 정보가 바뀔때 그 정보를 재할당 해주세요~
 
 const USER_KEY = 'Token';
 let loginKey = '';
-const strList = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+const strList = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
 const charsLength = 16;
+// 정규표현삭
+// 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 비교
+const passwordPattern = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/; 
 
 async function userKeyGenrator() {
   for (let i = 0; i < charsLength; i++) {
@@ -46,20 +49,22 @@ function loginDomNodeSettings() {
     userInfo = await axios.get('/userDatas')
       .then(res => res.data)
       .then(users => {
-        // 아이디 true / 비밀번호 false
-        users.some(user => {
-          if (user.email === $email && user.password !== $pw) {
-            console.log('비밀번호가 올바르지 않습니다.');
-          }
-        });
-        // 아이디 false
-        users.every(user => {
-          if (user.email !== $email) {
-            console.log('없는 이메일입니다.');
-          }
-        });
-        // 아이디 true / 비밀번호 true
+       
         users.find(user => {
+           // 아이디 true / 비밀번호 false
+          if (user.email === $email && user.password !== $pw) {
+            $emailWarning.setAttribute('style', 'display: none;');
+            $pwWarning.setAttribute('style', 'display: block;');
+            $pwWarning.textContent = '비밀번호가 올바르지 않습니다.';
+          }
+
+          // 아이디 false
+          if (user.email !== $email) {
+            $emailWarning.setAttribute('style', 'display: block;');
+            $emailWarning.textContent = '존재하지 않는 이메일 입니다.';
+          }
+
+          // 아이디 true / 비밀번호 true
           if (user.email === $email && user.password === $pw) {
             console.log('로그인 성공');
             const loadedUser = localStorage.getItem(USER_KEY);
@@ -71,7 +76,7 @@ function loginDomNodeSettings() {
             }
             removeLoginPage();
           }
-        });
+        }); 
       })
       .catch(err => console.error(err));
 
@@ -79,7 +84,6 @@ function loginDomNodeSettings() {
     //   console.log(userInfo);
     // } else {
     //   console.log('로그인 성공');
-      
     // }
   }
 
@@ -93,7 +97,7 @@ function loginDomNodeSettings() {
     const $pw = e.target[3].value;
     const $pwWarning = e.target[3].nextElementSibling;
     const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; //대소문자 구분 안하고 특수문자 -_.@ 사용 시 다음 문자열들 패턴을 추가 비교 
-    const passwordPattern = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/; //숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 비교
+    
 
     //회원가입 시도할 때 로직
     if (!$email.match(emailPattern)) {
@@ -105,6 +109,63 @@ function loginDomNodeSettings() {
       return;
     }
     //이구간에 포스트 로직을 추가해주세욥!
+    async function joinKeyPass() {
+      let uf = [];
+
+      uf = await axios.get('/userDatas')
+        .then(res => res.data)
+        .then(users => users.filter(user => {
+          return user.email === $email && user.nickName === $nickname;
+        }))
+        .catch(err => console.error(err));
+
+      if (uf.length > 0) {
+        console.log('중복된 이메일 입니다.')
+      } else {
+        uf = await axios.post('/userDatas', addUserData($email, $pw, $name, $nickname, 5));
+      }
+    }
+    joinKeyPass();
+  }
+
+  function addUserData (email, password, userName, nickName, loginCheck) {
+    const payload = {
+      email,
+      password,
+      userName,
+      nickName,
+      loginCheck,
+      boardsCount: 0,
+      marksCount: 0,
+      boards: [
+        {
+          id: 0,
+          likeCount: 0,
+          likeCheck: false,
+          markCheck: false,
+          content: '',
+          createTime: {
+            day: '',
+            h: '',
+            m: '',
+            s: ''
+          },
+          imgList: [
+            {
+              id: 0,
+              src: ''
+            }
+          ],
+          hashList: [
+            {
+              id: 0,
+              value: ''
+            }
+          ]
+        }
+      ]
+    }
+    return payload;
   }
 
   function changePageDisplay(e) {
@@ -131,7 +192,9 @@ function loginDomNodeSettings() {
 
 function loginInit() {
   loginDomNodeSettings();
+
 }
+// !!지우지 말것!!
 // export default function userInfoconnect() {
 //   return userInfo;
 // }
