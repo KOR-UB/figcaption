@@ -11,7 +11,7 @@ function feedDomNodeSettings() {
       case 'post-img':
         console.log(e);
         const $parent = e.target.parentNode;
-        $parent.parentNode.querySelector(".active").classList.remove("active");
+        // $parent.parentNode.querySelector(".active").classList.remove("active");
         // $parent.parentNode.classList
         if(e.clientX < e.target.offsetWidth / 2) {
           if($parent.style.left === '0%') return;
