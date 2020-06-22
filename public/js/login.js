@@ -13,7 +13,7 @@ function loginDomNodeSettings() {
     $loginPage.style.transitionDelay = delay + 's';
     $loginPage.classList.add('active');
     $loginPage.innerHTML = '로그인 성공!'
-    window.location.href = "index.html";
+    window.location.href = 'index.html';
     // setTimeout(() => {
     //   $loginPage.remove(); //로그인 페이지 제거 
     // }, 2000)
