@@ -9,7 +9,9 @@
     integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
   <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/post-style.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/upload.js" defer></script>
   <!-- <script defer src="./dist/js/bundle.js"></script> -->
   <!-- <script src="js/login.js" defer></script> -->
   <script src="js/feed.js" defer></script>
@@ -107,10 +109,25 @@
       </li>
     </ul>
     <div class="create-post">
-      <input type="file" style="display: none;" id="file">
+      <input type="button" style="display: none;" id="file" class="post-add">
       <label for="file">
         <i class="fas fa-pencil-alt"></i>
       </label>
+    </div>
+    <div class="post">
+      <div class="post-add-container">
+        <h3 class="post-heading">새 게시물</h3>
+        <div class="post-area1">
+          <button type="button" class="btn-img">+</button>
+          <input type="text" class="post-content" placeholder="문구 입력...">
+        </div>
+        <div class="post-area2">
+          <p class="post-hash">해시태그 추가</p>
+          <input type="text" class="hash-content" placeholder="  # 입력하세요..">
+        </div>
+        <button type="button" class="btn-cancle">취소</button>
+        <button type="button" class="btn-ok">공유</button>
+      </div>
     </div>
   </main>
   <script>
