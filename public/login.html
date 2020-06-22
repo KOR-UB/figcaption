@@ -32,17 +32,34 @@
   </div>
   <div class="login-page">
     <p class="login-title">figcaption</p>
-    <form class="login-form" method="dialog"> 
-      <input type="email" name="email" placeholder="이메일을 입력해 주세요" required  autofocus>
-      <input type="password" name="password" placeholder="비밀번호를 입력해 주세요" minlength="8" maxlength="12" required>
-      <button class="sign-in">로그인</button>
+    <form class="login-form" method="POST"> 
+      <label for="login-email" class="a11y-hidden">이메일</label>
+      <input type="email" name="email" id="login-email" placeholder="이메일을 입력해 주세요" required  autofocus>
+      <span class="warning-msg email">올바른 이메일 형식으로 입력해주세요.</span>
+
+      <label for="login-pw" class="a11y-hidden">비밀번호</label>
+      <input type="password" name="password" id="login-pw" placeholder="비밀번호를 입력해 주세요" minlength="8" maxlength="12" required>
+      <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
+
+      <button class="sign-in" type="submit">로그인</button>
     </form>
-    <button class="sign-up">회원가입</button>
+    <button class="sign-up" type="button">회원가입</button>
+
     <form class="sign-up-form" method="POST">
-      <input type="email" name="email"placeholder="이메일 주소" required  autofocus>
-      <input type="text" name="name" placeholder="이름" required>
-      <input type="text" name="nickname" placeholder="닉네임" required>
-      <input type="password" name="password" placeholder="비밀번호" minlength="8" maxlength="12" required>
+      <label for="join-email" class="a11y-hidden">이메일</label>
+      <input type="email" name="email" id="join-email" placeholder="이메일 주소" required  autofocus>
+      <span class="warning-msg email">사용 불가능한 이메일입니다.</span>
+
+      <label for="join-name" class="a11y-hidden">이름</label>
+      <input type="text" name="name" id="join-name" placeholder="이름" required>
+
+      <label for="join-nick" class="a11y-hidden">닉네임</label>
+      <input type="text" name="nickname" id="join-nick" placeholder="닉네임" required>
+
+      <label for="join-pw" class="a11y-hidden">비밀번호</label>
+      <input type="password" name="password" id="join-pw" placeholder="비밀번호" minlength="8" maxlength="12" required>
+      <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
+
       <button class="sign-up-check">가입</button>
     </form>
     <button class="return-login-form">돌아가기</button>
