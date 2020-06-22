@@ -45,21 +45,42 @@ function loginDomNodeSettings() {
     //로그인 시도할 때 로직
     userInfo = await axios.get('/userDatas')
       .then(res => res.data)
-      .then(users => users.find(user => user.email === $email && user.password === $pw))
+      .then(users => {
+        // 아이디 true / 비밀번호 false
+        users.some(user => {
+          if (user.email === $email && user.password !== $pw) {
+            console.log('비밀번호가 올바르지 않습니다.');
+          }
+        });
+        // 아이디 false
+        users.every(user => {
+          if (user.email !== $email) {
+            console.log('없는 이메일입니다.');
+          }
+        });
+        // 아이디 true / 비밀번호 true
+        users.find(user => {
+          if (user.email === $email && user.password === $pw) {
+            console.log('로그인 성공');
+            const loadedUser = localStorage.getItem(USER_KEY);
+            console.log(loadedUser);
+            if (loadedUser === null) {
+              userKeyGenrator();
+            } else {
+              keyPass();
+            }
+            removeLoginPage();
+          }
+        });
+      })
       .catch(err => console.error(err));
-    if (!userInfo) {
-      console.log('일치한 유저 정보가 없음');
-    } else {
-      console.log('로그인 성공');
-      const loadedUser = localStorage.getItem(USER_KEY);
-      console.log(loadedUser);
-      if (loadedUser === null) {
-        userKeyGenrator();
-      } else {
-        keyPass();
-      }
-      removeLoginPage();
-    }
+
+    // if (!userInfo) {
+    //   console.log(userInfo);
+    // } else {
+    //   console.log('로그인 성공');
+      
+    // }
   }
 
   function signUpHandler(e) {
