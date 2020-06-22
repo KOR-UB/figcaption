@@ -173,7 +173,6 @@ button {
   border: none;
 }
 header {
-  overflow-x: hidden;
   width: 100%;
   height: 40px;
   display: flex;
@@ -225,7 +224,7 @@ svg {
   overflow: hidden;
   font-size: 2em;
   color: #1a777a;
-  box-shadow: 0px 6px 15px 1px rgba(0, 0, 0, 0.452);
+  box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-reflect: below 2px linear-gradient(transparent,transparent,rgba(0,0,0,0.1));
 }
 .post-container {
@@ -253,9 +252,6 @@ svg {
   max-height: 70vh;
   display: flex;
   transition: 1.5s;
-}
-.post-container .post-card .post-imgbox:hover {
-  left: -200%;
 }
 .post-container .post-card .post-imgbox img {
   object-fit: cover;

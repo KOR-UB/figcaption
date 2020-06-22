@@ -1,13 +1,11 @@
 // import userInfoConnect from './login';
 // let userInfo;
-let startPos;
-let changePos
 function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
   function touchHandler(e) {
     if(e.target.matches($postContainer.classList)) return;
-    switch (e.target.className) {
+    switch (e.target.classList) {
       case 'post-img':
         console.log('이미지 클릭 됨');
       break;

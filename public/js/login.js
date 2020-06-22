@@ -13,9 +13,10 @@ function loginDomNodeSettings() {
     $loginPage.style.transitionDelay = delay + 's';
     $loginPage.classList.add('active');
     $loginPage.innerHTML = '로그인 성공!'
-    setTimeout(() => {
-      $loginPage.remove(); //로그인 페이지 제거 
-    }, 2000)
+    window.location.href = "index.html";
+    // setTimeout(() => {
+    //   $loginPage.remove(); //로그인 페이지 제거 
+    // }, 2000)
   }
   async function signInHandler(e) {
     e.preventDefault();
@@ -60,11 +61,10 @@ function loginDomNodeSettings() {
     $loginPage.classList.toggle('sign-up-check');
   }
   function loginEventBinds() {
-    window.onload = 
     $loginForm.addEventListener('submit', signInHandler);
     $signUpForm.addEventListener('submit', signUpHandler);
-    $signUp.addEventListener('click', changePageDisplay)
-    $returnLoginForm.addEventListener('click', changePageDisplay)
+    $signUp.addEventListener('click', changePageDisplay);
+    $returnLoginForm.addEventListener('click', changePageDisplay);
   }
   loginEventBinds();
   async function autoLogin() {
@@ -79,7 +79,7 @@ function loginDomNodeSettings() {
 function loginInit() {
   loginDomNodeSettings();
 }
-// export default function userInfoconnect() {
-//   return userInfo;
-// }
+export default function userInfoconnect() {
+  return userInfo;
+}
 loginInit();
