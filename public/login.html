@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./css/header.css">
   <title>Document</title>
 </head>
@@ -36,6 +37,7 @@
       <label for="login-email" class="a11y-hidden">이메일</label>
       <input type="email" name="email" id="login-email" placeholder="이메일을 입력해 주세요" required  autofocus>
       <span class="warning-msg email">올바른 이메일 형식으로 입력해주세요.</span>
+<<<<<<< HEAD
 
       <label for="login-pw" class="a11y-hidden">비밀번호</label>
       <input type="password" name="password" id="login-pw" placeholder="비밀번호를 입력해 주세요" minlength="8" maxlength="12" required>
@@ -45,10 +47,19 @@
     </form>
     <button class="sign-up" type="button">회원가입</button>
 
+=======
+      <label for="login-pw" class="a11y-hidden">비밀번호</label>
+      <input type="password" name="password" id="login-pw" placeholder="비밀번호를 입력해 주세요" minlength="8" maxlength="12" required>
+      <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
+      <button class="sign-in" type="submit">로그인</button>
+    </form>
+    <button class="sign-up" type="button">회원가입</button>
+>>>>>>> a05df40f81bbbad85b9f1b4d2827310de96d3889
     <form class="sign-up-form" method="POST">
       <label for="join-email" class="a11y-hidden">이메일</label>
       <input type="email" name="email" id="join-email" placeholder="이메일 주소" required  autofocus>
       <span class="warning-msg email">사용 불가능한 이메일입니다.</span>
+<<<<<<< HEAD
 
       <label for="join-name" class="a11y-hidden">이름</label>
       <input type="text" name="name" id="join-name" placeholder="이름" required>
@@ -60,6 +71,15 @@
       <input type="password" name="password" id="join-pw" placeholder="비밀번호" minlength="8" maxlength="12" required>
       <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
 
+=======
+      <label for="join-name" class="a11y-hidden">이름</label>
+      <input type="text" name="name" id="join-name" placeholder="이름" required>
+      <label for="join-nick" class="a11y-hidden">닉네임</label>
+      <input type="text" name="nickname" id="join-nick" placeholder="닉네임" required>
+      <label for="join-pw" class="a11y-hidden">비밀번호</label>
+      <input type="password" name="password" id="join-pw" placeholder="비밀번호" minlength="8" maxlength="12" required>
+      <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
+>>>>>>> a05df40f81bbbad85b9f1b4d2827310de96d3889
       <button class="sign-up-check">가입</button>
     </form>
     <button class="return-login-form">돌아가기</button>
