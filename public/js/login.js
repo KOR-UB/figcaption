@@ -79,7 +79,7 @@ function loginDomNodeSettings() {
 function loginInit() {
   loginDomNodeSettings();
 }
-export default function userInfoconnect() {
-  return userInfo;
-}
+// export default function userInfoconnect() {
+//   return userInfo;
+// }
 loginInit();
