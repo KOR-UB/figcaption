@@ -10,7 +10,7 @@ const charsLength = 16;
 async function userKeyGenrator() {
   for (let i = 0; i < charsLength; i++) {
     const randomNum = Math.floor(Math.random() * strList.length);
-    loginKey+= strList.substring(randomNum, randomNum + 1);
+    loginKey += strList.substring(randomNum, randomNum + 1);
   }
   localStorage.setItem(USER_KEY, loginKey);
   userInfo.loginCheck = loginKey;
@@ -18,11 +18,12 @@ async function userKeyGenrator() {
 }
 async function keyPass() {
   userInfo = await axios.get('/userDatas')
-  .then(res => res.data)
-  .then(users => users.find(user => user.loginCheck === localStorage.getItem(USER_KEY)))
-  .catch(err => console.error(err));
+    .then(res => res.data)
+    .then(users => users.find(user => user.loginCheck === localStorage.getItem(USER_KEY)))
+    .catch(err => console.error(err));
   console.log(userInfo);
 }
+
 function loginDomNodeSettings() {
   const $loginPage = document.querySelector('.login-page');
   const $loginForm = $loginPage.querySelector('.login-form');
@@ -32,8 +33,6 @@ function loginDomNodeSettings() {
 
   function removeLoginPage() {
     // feedInit();
-    $loginPage.classList.add('active');
-    $loginPage.innerHTML = '로그인 성공!'
     window.location.href = 'index.html';
     // setTimeout(() => {
     //   $loginPage.remove(); //로그인 페이지 제거 
@@ -48,10 +47,10 @@ function loginDomNodeSettings() {
 
     //로그인 시도할 때 로직
     userInfo = await axios.get('/userDatas')
-    .then(res => res.data)
-    .then(users => users.find(user => user.email === $email && user.password === $pw))
-    .catch(err => console.error(err));
-    if(!userInfo) {
+      .then(res => res.data)
+      .then(users => users.find(user => user.email === $email && user.password === $pw))
+      .catch(err => console.error(err));
+    if (!userInfo) {
       console.log('일치한 유저 정보가 없음');
     } else {
       console.log('로그인 성공');
@@ -65,6 +64,7 @@ function loginDomNodeSettings() {
       // removeLoginPage();
     }
   }
+
   function signUpHandler(e) {
     e.preventDefault();
     console.dir(e);
@@ -84,13 +84,15 @@ function loginDomNodeSettings() {
     }
     if (!$pw.match(passwordPattern)) {
       console.log('패스워드 패턴 일치하지 않음');
-      return; 
+      return;
     }
     //이구간에 포스트 로직을 추가해주세욥!
   }
+
   function changePageDisplay(e) {
     $loginPage.classList.toggle('sign-up-check');
   }
+
   function loginEventBinds() {
     $loginForm.addEventListener('submit', signInHandler);
     $signUpForm.addEventListener('submit', signUpHandler);
@@ -107,6 +109,7 @@ function loginDomNodeSettings() {
   // }
   // autoLogin(); 
 }
+
 function loginInit() {
   loginDomNodeSettings();
 }
