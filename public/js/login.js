@@ -32,12 +32,7 @@ function loginDomNodeSettings() {
 
   function removeLoginPage() {
     // feedInit();
-    $loginPage.classList.add('active');
-    $loginPage.innerHTML = '로그인 성공!'
     window.location.href = 'index.html';
-    // setTimeout(() => {
-    //   $loginPage.remove(); //로그인 페이지 제거 
-    // }, 2000)
   }
   async function signInHandler(e) {
     e.preventDefault();
@@ -62,7 +57,7 @@ function loginDomNodeSettings() {
       } else {
         keyPass();
       }
-      // removeLoginPage();
+      removeLoginPage();
     }
   }
   function signUpHandler(e) {
@@ -98,14 +93,15 @@ function loginDomNodeSettings() {
     $returnLoginForm.addEventListener('click', changePageDisplay);
   }
   loginEventBinds();
-  // async function autoLogin() {
-  //   userInfo = await axios.get('/userDatas')
-  //   .then(res => res.data)
-  //   .then(users => users.find(user => user.loginCheck))
-  //   if(!userInfo || !userInfo.loginCheck) return;
-  //   removeLoginPage();
-  // }
-  // autoLogin(); 
+  async function autoLogin() {
+    userInfo = await axios.get('/userDatas')
+    .then(res => res.data)
+    .then(users => users.find(user => user.loginCheck === localStorage.getItem(USER_KEY)))
+    .catch(err => console.error(err));
+    if(!userInfo || !userInfo.loginCheck) return;
+    removeLoginPage();
+  }
+  autoLogin(); 
 }
 function loginInit() {
   loginDomNodeSettings();
