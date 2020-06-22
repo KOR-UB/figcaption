@@ -10,12 +10,16 @@ const charsLength = 16;
 // 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 비교
 const passwordPattern = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/; 
 
-async function userKeyGenrator() {
+async function userKeyGenerator() {
   for (let i = 0; i < charsLength; i++) {
     const randomNum = Math.floor(Math.random() * strList.length);
     loginKey += strList.substring(randomNum, randomNum + 1);
   }
   localStorage.setItem(USER_KEY, loginKey);
+  userInfo = await axios.get('/userDatas')
+    .then(res => res.data)
+    .then(users => users.find(user => user.loginCheck === localStorage.getItem(USER_KEY)))
+    .catch(err => console.error(err));
   userInfo.loginCheck = loginKey;
   userInfo = await axios.patch(`/userDatas/${userInfo.id}`, userInfo);
 }
@@ -70,7 +74,7 @@ function loginDomNodeSettings() {
             const loadedUser = localStorage.getItem(USER_KEY);
             console.log(loadedUser);
             if (loadedUser === null) {
-              userKeyGenrator();
+              userKeyGenerator();
             } else {
               keyPass();
             }
@@ -122,7 +126,14 @@ function loginDomNodeSettings() {
       if (uf.length > 0) {
         console.log('중복된 이메일 입니다.')
       } else {
-        uf = await axios.post('/userDatas', addUserData($email, $pw, $name, $nickname, 5));
+        const loadedUser = localStorage.getItem(USER_KEY);
+        if (loadedUser === null) {
+          userKeyGenerator();
+        } else {
+          keyPass();
+        }
+        uf = await axios.post('/userDatas', addUserData($email, $pw, $name, $nickname, loginKey));
+        removeLoginPage();
       }
     }
     joinKeyPass();
