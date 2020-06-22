@@ -57,7 +57,8 @@ body.error-login {
 }
 .login-page input,
 .login-page button {
-  width: 300px;
+  /* 민지 주석 */
+  /* width: 300px; */
   display: block;
   border: 2px solid rgb(190, 190, 190);
   border-radius: 5px;
@@ -67,7 +68,8 @@ body.error-login {
   padding: 5px 20px;
 }
 .login-page input[type="password"] {
-  margin-bottom: 14px;
+  /* 민지 주석 */
+  /* margin-bottom: 14px; */
 }
 .login-page button {
   position: relative;
