@@ -2,6 +2,7 @@
   width: 80%;
   margin: 50px auto 0;
 }
+
 .login-page input {
   width: 100%;
   height: 36px;
@@ -12,17 +13,26 @@
   font-size: 14px;
 }
 
+.warning-msg-wrap {
+  display: block;
+  width: 100%;
+  height: 20px;
+  color: #ff6464;
+  font-size: 13px;
+  margin: 5px 0 5px 15px;
+}
+
 .login-page .warning-msg {
   display: none;
-  margin: 5px 0 10px 8px;
-  font-size: 11px;
-  color: #ff6464;
+  font-size: 13px;
+
+
 }
 
 .login-page .common-btn.login {
   width: 100%;
-  height: 35px;
-  margin: 15px 0 3px 0;
+  height: 45px;
+  margin: 5px 0 5px 0;
   border-radius: 5px;
   line-height: 35px;
   font-weight: bold;
@@ -30,15 +40,15 @@
 
 .login-page .sign-in,
 .login-page .sign-up-check {
-  border-color: #afdcf9;
+  border-color: #0095f6;
   color: #fff;
-  background-color: #afdcf9;
+  background-color: #0095f6;
 }
 
 .login-page .login.sign-up,
 .login-page.sign-up-check .return-login-form {
   margin: 0 auto;
   width: 80%;
-  border: 1px solid #afdcf9;
-  color: #afdcf9;
+  border: 1px solid #0095f6;
+  color: #0095f6;
 }
