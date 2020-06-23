@@ -321,6 +321,9 @@ svg {
 .post-container .post-card .post-content .post-icon-container .center-icon .item-light.active {
   background: rgb(52, 120, 197);
 }
+.post-container .post-card .post-content .post-icon-container .right-icon {
+  text-align: right;
+}
 .hash {
   color: #17395a;
 }

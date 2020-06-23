@@ -1,12 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-case-declarations */
 // import userInfoConnect from './login';
-
+const $postContainer = document.querySelector('.post-container');
 let slidePos = 0;
-let getToken;
+let user;
 function feedDomNodeSettings() {
-  const $postContainer = document.querySelector('.post-container');
-
   function sliderHandler($PP, pos) {
     const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll('.item-light');
     $sliderPosIcons[0].parentNode.querySelector(".active").classList.remove('active');
@@ -39,13 +37,21 @@ function feedDomNodeSettings() {
         sliderHandler($parentPreviouss, --slidePos);
       break;
       case 'heart':
-        getToken.boards[0].likeCheck = true;
-        getToken = await axios.patch(`/userDatas/${getToken.id}`, getToken)
-        e.target.classList.toggle("active");
-        e.target.querySelector('svg > path').setAttribute("d",
-          "M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-        );
-        console.log(getToken);
+      case 'heart active':
+        user.boards[0].likeCheck = user.boards[0].likeCheck ? false : true;
+        user = await axios.patch(`/userDatas/${user.id}`, user)
+        .then(res => res.data)
+        .catch(err => console.error(err));
+        e.target.classList.toggle('active');
+        if (user.boards[0].likeCheck) {
+          console.log("!");
+          e.target.querySelector('svg > path').setAttribute('d',
+            'M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z');
+        } else {
+          console.log("?");
+          e.target.querySelector('svg > path').setAttribute('d', 'M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z');
+        }
+     
       break;
       case 'msg': 
         console.log('메시지');
@@ -59,22 +65,120 @@ function feedDomNodeSettings() {
   feedEventBinds();
 }
 
-function postRender() {
+function createNode(tag, _class = '') {
+  const node = document.createElement(tag);
+  node.className = _class;
+  return node;
+}
 
+function postRender(user) {
+
+  const $postCard = createNode('li', 'post-card'),
+
+  $postHeader = createNode('div', 'post-header'),
+  $profile = createNode('img', 'profile'),
+  $postNickName = createNode('p', 'post-nickname'),
+
+  $postImgContainer = createNode('div', 'post-img-container'),
+  $postImgbox = createNode('div', 'post-imgbox'),
+  $postImg = createNode('img', 'post-img'),
+
+  $slideController = createNode('div', 'slide-controller'),
+  $sliderLeftBtn = createNode('button', 'slider-left-btn'),
+  $sliderRightBtn = createNode('button', 'slider-right-btn'),
+
+  $postContent = createNode('div', 'post-content'),
+  $postIconContainer = createNode('div', 'post-icon-container'),
+  
+  $leftIcon = createNode('div', 'left-icon'),
+  $heart = createNode('button', 'heart'),
+  $heartSvg = createNode('svg'),
+  $heartPath = createNode('path'),
+
+  $msg = createNode('button', 'msg'),
+  $msgSvg = createNode('svg'),
+  $msgPath = createNode('path'),
+
+  $centerIcon = createNode('div', 'center-icon'),
+  $itemLight = createNode('div', 'item-light'),
+
+  $rightIcon = createNode('div', 'right-icon'),
+  $mark = createNode('button', 'mark'),
+  $markSvg = createNode('svg'),
+  $markPath = createNode('path'),
+
+  $postTextContainer = createNode('div', 'post-text-container'),
+  $heartText = createNode('p', 'heart-text'),
+  $count = createNode('span', 'count'),
+  $nick = createNode('p', 'nick'),
+  $hash = createNode('span', 'hash'),
+  $plusText = createNode('span', 'plus-text'),
+  $longText = createNode('div', 'long-text');
+
+
+  
+  $postHeader.appendChild($profile);
+  $postHeader.appendChild($postNickName);
+  
+  $postImgContainer.appendChild($postImgbox);
+  $postImgbox.appendChild($postImg); //img
+
+  $slideController.appendChild($sliderLeftBtn);
+  $slideController.appendChild($sliderRightBtn);
+  $postImgContainer.appendChild($slideController);
+  $heartSvg.appendChild($heartPath);
+  $heart.appendChild($heartSvg);
+  $msgSvg.appendChild($msgPath);
+  $msg.appendChild($msgSvg);
+  $leftIcon.appendChild($heart);
+  $leftIcon.appendChild($msg);  
+  $postIconContainer.appendChild($leftIcon);
+
+  $centerIcon.appendChild($itemLight); //pos
+  $postIconContainer.appendChild($centerIcon);
+
+  $markSvg.appendChild($markPath);
+  $mark.appendChild($markSvg)
+  $rightIcon.appendChild($mark);
+  $postIconContainer.appendChild($rightIcon);
+
+  $postContent.appendChild($postIconContainer);
+
+  $postTextContainer.appendChild($heartText);
+  $heartText.appendChild($count);
+  $postTextContainer.appendChild($nick);
+  $nick.appendChild($hash);
+  $nick.appendChild($plusText);
+  $postTextContainer.appendChild($longText);
+  $postContent.appendChild($postTextContainer);
+
+  $postCard.appendChild($postHeader);
+  $postCard.appendChild($postImgContainer);
+  $postCard.appendChild($postContent);
+
+  $postContainer.appendChild($postCard);
+  // console.log();
+  
+
+
+
+
+  const { nickName, boards } = user;
+  // const { likeCheck } = boards;
 }
 // export default 
 async function feedInit() {
   // userInfo = userInfoConnect();
   // console.log(userInfo);
   const Token = localStorage.getItem('Token');
-  getToken = await axios.get('/userDatas')
+  user = await axios.get('/userDatas')
   .then(res => res.data)
   .then(users => users.find(user => user.loginCheck === Token))
   .catch(err => console.error(err));
-  if(!getToken) window.location.href = "./login.html";
-  console.log(getToken);
+  if(!user) window.location.href = './login.html';
+  console.log(user);
   feedDomNodeSettings();
-  postRender();
+  postRender(user);
 }
 feedInit();
 
@@ -82,7 +186,7 @@ feedInit();
 
 
 // setTimeout(() => {
-//   document.querySelector(".login-page").classList.add("active");
+//   document.querySelector('.login-page").classList.add("active");
 // }, 1000);
 
 // let userinfo;

@@ -49,7 +49,7 @@
         {
           "id": 0,
           "likeCount": 0,
-          "likeCheck": true,
+          "likeCheck": false,
           "markCheck": false,
           "content": "",
           "createTime": {
@@ -60,9 +60,42 @@
           },
           "imgList": [
             {
-              "id": 0,
-              "src": ""
-            }
+              "id": 1,
+              "src": "./img/austria.jpg"
+            },
+            {
+              "id": 2,
+              "src": "./img/austria.jpg"
+            },
+            {
+              "id": 3,
+              "src": "./img/austria.jpg"
+            },
+            {
+              "id": 1,
+              "likeCount": 0,
+              "likeCheck": false,
+              "markCheck": false,
+              "content": "",
+              "createTime": {
+                "day": "",
+                "h": "",
+                "m": "",
+                "s": ""
+              },
+              "imgList": [
+                {
+                  "id": 1,
+                  "src": "./img/brand1.jpg"
+                },
+                {
+                  "id": 2,
+                  "src": "./img/brand1.jpg"
+                },
+                {
+                  "id": 3,
+                  "src": "./img/brand1.jpg"
+                }
           ],
           "hashList": [
             {
