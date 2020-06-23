@@ -5,22 +5,42 @@ let slidePos = 0;
 function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
+  function sliderLeftHandler($PP) {
+    if($PP.style.left === '0%') return;
+    const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll('.item-light');
+    $sliderPosIcons[0].parentNode.querySelector(".active").classList.remove('active');
+    $PP.style.left = `${++slidePos * 100}%`;
+    $sliderPosIcons[-slidePos].classList.add('active');
+  } 
+  function sliderRightHandler($PP) {
+    if($PP.style.left === '-200%') return;
+    const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll('.item-light');
+    $sliderPosIcons[0].parentNode.querySelector(".active").classList.remove('active');
+    $PP.style.left = `${--slidePos * 100}%`;
+    $sliderPosIcons[-slidePos].classList.add('active');
+  } 
   function touchHandler(e) {
     if (e.target.matches($postContainer.classList)) return;
+    let $parentPreviouss = e.target.parentNode.previousElementSibling;
     switch (e.target.className) {
-      case 'post-img':
-        console.log(e);
-        const $parent = e.target.parentNode;
-        // $parent.parentNode.querySelector(".active").classList.remove("active");
-        // $parent.parentNode.classList
-        if(e.clientX < e.target.offsetWidth / 2) {
-          if($parent.style.left === '0%') return;
-          $parent.style.left = `${++slidePos * 100}%`;
-        } else {
-          if($parent.style.left === '-200%') return;
-          $parent.style.left = `${--slidePos * 100}%`;
-        }
+      case 'slider-left-btn':
+        sliderLeftHandler($parentPreviouss);
       break;
+      case 'slider-right-btn':
+        sliderRightHandler($parentPreviouss);
+      break;
+      // case 'post-img':
+      //   const $parent = e.target.parentNode;
+      //   // $parent.parentNode.querySelector(".active").classList.remove("active");
+      //   // $parent.parentNode.classList
+      //   if(e.clientX < e.target.offsetWidth / 2) {
+      //     if($parent.style.left === '0%') return;
+      //     $parent.style.left = `${++slidePos * 100}%`;
+      //   } else {
+      //     if($parent.style.left === '-200%') return;
+      //     $parent.style.left = `${--slidePos * 100}%`;
+      //   }
+      // break;
     }
   }
 

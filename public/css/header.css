@@ -255,30 +255,29 @@ svg {
   display: flex;
   transition: 0.5s;
 }
-.post-container .post-card .post-imgbox .slide-controll {
+.post-container .post-card .post-img-container {
+  position: relative;
+  width: 100%;
+}
+.post-container .post-card .post-img-container .slide-controller {
   position: absolute;
-  top: 0;
+  top: 45%;
   left: 0;
-  width: 100vw;
-  background: red;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 2em;
 }
-/* .post-container .post-card .post-imgbox .left-slide-btn,
-.post-container .post-card .post-imgbox .right-slide-btn {
-  z-index: 100;
-  position: absolute;
-  top: -10%;
+.post-container .post-card .post-img-container .slide-controller button {
   color: #fff;
-  font-size: 3em;
+  background: rgb(90, 90, 90);
+  width: 40px;
+  height: 40px;
+  margin: 0px 8px;
+  border-radius: 50%;
+  outline: none;
 }
-.post-container .post-card .post-imgbox .left-slide-btn {
-  left: 0;
-}
-.post-container .post-card .post-imgbox .right-slide-btn {
-  right: 0;
-} */
 .post-container .post-card .post-imgbox img {
   object-fit: cover;
   width: 33.3333%;
@@ -355,11 +354,11 @@ svg {
 .icon-heart.active path
 {
     transform-origin: center;
-    animation: anim-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+    animation: anim-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 }
 .heart.active {
   fill: #ed4956;
-  animation: active-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+  animation: active-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 }
 @keyframes active-heart {
   0% {
