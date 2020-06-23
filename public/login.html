@@ -7,6 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/login-style.css">
   <title>figcaption | Login</title>
 </head>
 <body>
@@ -41,9 +42,9 @@
       <label for="login-pw" class="a11y-hidden">비밀번호</label>
       <input type="password" name="password" id="login-pw" placeholder="비밀번호를 입력해 주세요" minlength="8" maxlength="12" required>
       <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
-      <button class="sign-in" type="submit">로그인</button>
+      <button class="sign-in common-btn login" type="submit">로그인</button>
     </form>
-    <button class="sign-up" type="button">회원가입</button>
+    <button class="sign-up common-btn login" type="button">회원가입</button>
     <form class="sign-up-form" method="POST">
       <label for="join-email" class="a11y-hidden">이메일</label>
       <input type="email" name="email" id="join-email" placeholder="이메일 주소" required  autofocus>
@@ -55,9 +56,9 @@
       <label for="join-pw" class="a11y-hidden">비밀번호</label>
       <input type="password" name="password" id="join-pw" placeholder="비밀번호" minlength="8" maxlength="12" required>
       <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
-      <button class="sign-up-check">가입</button>
+      <button class="sign-up-check common-btn login">가입</button>
     </form>
-    <button class="return-login-form">돌아가기</button>
+    <button class="return-login-form common-btn login">돌아가기</button>
   </div>
   <script>
     setTimeout(() => {
