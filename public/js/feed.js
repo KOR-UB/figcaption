@@ -6,29 +6,24 @@ let getToken;
 function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
-  function sliderLeftHandler($PP) {
-    if($PP.style.left === '0%') return;
+  function sliderHandler($PP, pos) {
     const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll('.item-light');
     $sliderPosIcons[0].parentNode.querySelector(".active").classList.remove('active');
-    $PP.style.left = `${++slidePos * 100}%`;
-    $sliderPosIcons[-slidePos].classList.add('active');
+    $PP.style.left = `${pos * 100}%`;
+    $sliderPosIcons[-pos].classList.add('active');
   } 
-  function sliderRightHandler($PP) {
-    if($PP.style.left === '-200%') return;
-    const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll('.item-light');
-    $sliderPosIcons[0].parentNode.querySelector(".active").classList.remove('active');
-    $PP.style.left = `${--slidePos * 100}%`;
-    $sliderPosIcons[-slidePos].classList.add('active');
-  } 
+
   function touchHandler(e) {
     if (e.target.matches($postContainer.classList)) return;
     let $parentPreviouss = e.target.parentNode.previousElementSibling;
     switch (e.target.className) {
       case 'slider-left-btn':
-        sliderLeftHandler($parentPreviouss);
+        if($parentPreviouss.style.left === '0%') return;
+        sliderHandler($parentPreviouss, ++slidePos);
       break;
       case 'slider-right-btn':
-        sliderRightHandler($parentPreviouss);
+        if($parentPreviouss.style.left === '-200%') return;
+        sliderHandler($parentPreviouss, --slidePos);
       break;
     }
   }
