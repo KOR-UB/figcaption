@@ -126,8 +126,11 @@
       <div class="post-add-container">
         <h3 class="post-heading">새 게시물</h3>
         <div class="post-area1">
-          <button type="button" class="btn-img">+</button>
-          <input type="text" class="post-content" placeholder="문구 입력...">
+          <label for="post-btn-img" class="btn-img">
+            <input id="post-btn-img" type="file" class="btn-img-file a11y-hidden">
+          </label>
+          <!-- <button type="file" class="btn-img ">+</button> -->
+          <textarea type="text" class="post-content" placeholder="문구 입력..."></textarea>
         </div>
         <div class="post-area2">
           <p class="post-hash">해시태그 추가</p>
