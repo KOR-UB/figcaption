@@ -53,19 +53,20 @@ function loginDomNodeSettings() {
     userInfo = await axios.get('/userDatas')
       .then(res => res.data)
       .then(users => {
-       
+        users.every(user => {
+          // 아이디 false
+          // 0623 :: 민지 수정 (find할 시, 이메일이 있는경우에도 비밀번호 틀렸을때 존재하지않는 이메일이라뜸)
+          if (user.email !== $email) {
+            $emailWarning.setAttribute('style', 'display: block;');
+            $emailWarning.textContent = '존재하지 않는 이메일 입니다.';
+          }
+        });
         users.find(user => {
            // 아이디 true / 비밀번호 false
           if (user.email === $email && user.password !== $pw) {
             $emailWarning.setAttribute('style', 'display: none;');
             $pwWarning.setAttribute('style', 'display: block;');
             $pwWarning.textContent = '비밀번호가 올바르지 않습니다.';
-          }
-
-          // 아이디 false
-          if (user.email !== $email) {
-            $emailWarning.setAttribute('style', 'display: block;');
-            $emailWarning.textContent = '존재하지 않는 이메일 입니다.';
           }
 
           // 아이디 true / 비밀번호 true
@@ -111,6 +112,9 @@ function loginDomNodeSettings() {
     }
     if (!$pw.match(passwordPattern)) {
       console.log('패스워드 패턴 일치하지 않음');
+      // 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 비교
+      $pwWarning.setAttribute('style', 'display: block;');
+      $pwWarning.textContent = '영문/숫자/특수문자를 조합하여 8자리 이상 입력해주세요.';
       return;
     }
     //이구간에 포스트 로직을 추가해주세욥!
