@@ -7,9 +7,11 @@ const USER_KEY = 'Token';
 let loginKey = '';
 const strList = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
 const charsLength = 16;
-// 정규표현삭
+// 비밀번호 정규표현식
 // 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 비교
 const passwordPattern = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+// 이메일 정규표현식
+const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; //대소문자 구분 안하고 특수문자 -_.@ 사용 시 다음 문자열들 패턴을 추가 비교 
 
 async function userKeyGenerator() {
   for (let i = 0; i < charsLength; i++) {
@@ -38,11 +40,60 @@ function loginDomNodeSettings() {
   const $signUpForm = $loginPage.querySelector('.sign-up-form');
   const $signUp = $loginPage.querySelector('.sign-up');
   const $returnLoginForm = $loginPage.querySelector('.return-login-form');
+  const $loginSignIn = document.querySelector('.sign-in');
+  const $loginEmail = document.querySelector('#login-email');
+  const $loginEmailWarning = $loginEmail.nextElementSibling;
+  const $loginPw = document.querySelector('#login-pw');
+  const $loginPwWarning = $loginPw.nextElementSibling;
 
   function removeLoginPage() {
     // feedInit();
     window.location.href = 'index.html';
   }
+
+  // disabled가 false이면 로그인 가능함
+  let emailState = false;
+  let pwState = false;
+
+  // 이메일 형식체크
+  $loginEmail.onblur = e => {
+    console.log('blur : 블러이벤트 일어남');
+    $loginSignIn.disabled = true;
+    if (!$loginEmail.value.match(emailPattern)) {
+
+      $loginEmailWarning.setAttribute('style', 'display: block;');
+      $loginEmailWarning.textContent = '올바른 이메일 형식으로 입력해주세요.';
+
+      
+    }else {
+      emailState = true; 
+      if (emailState && pwState) {
+        $loginSignIn.disabled = false;
+      }
+      $loginEmailWarning.setAttribute('style', 'visibility:hidden;');
+    }
+  };
+
+  // 비밀번호 형식체크
+  $loginPw.onblur = e => {
+    console.log('blur : 블러이벤트 일어남');
+    $loginSignIn.disabled = true;
+
+    if (!$loginPw.value.match(passwordPattern) || !$loginPw.value) {
+      console.log('비밀번호 형식 일치하지 않음');
+      $loginPwWarning.setAttribute('style', 'display: block;');
+      $loginPwWarning.textContent = '영문/숫자/특수문자를 조합하여 8자리 이상 입력해주세요.';
+    }else {
+      $loginPwWarning.setAttribute('style', 'visibility:hidden;');
+      pwState = true; 
+      if (emailState && pwState) {
+        $loginSignIn.disabled = false;
+      }
+    }
+    
+  };
+
+  
   async function signInHandler(e) {
     e.preventDefault();
     const $email = e.target[0].value;
@@ -55,14 +106,17 @@ function loginDomNodeSettings() {
       .then(res => res.data)
       .then(users => {
         users.every(user => {
+          console.log('1');
           // 아이디 false
           // 0623 :: 민지 수정 (find할 시, 이메일이 있는경우에도 비밀번호 틀렸을때 존재하지않는 이메일이라뜸)
           if (user.email !== $email) {
-            $emailWarning.setAttribute('style', 'visibility:hidden;');
+            $emailWarning.setAttribute('style', 'visibility:visible;');
+            $pwWarning.setAttribute('style', 'visibility:hidden;');
             $emailWarning.textContent = '존재하지 않는 이메일 입니다.';
           }
         });
         users.find(user => {
+          console.log('2');
           // 아이디 true / 비밀번호 false
           if (user.email === $email && user.password !== $pw) {
             $emailWarning.setAttribute('style', 'visibility:hidden;');
@@ -72,20 +126,27 @@ function loginDomNodeSettings() {
 
           // 아이디 true / 비밀번호 true
           if (user.email === $email && user.password === $pw) {
+            console.log('3');
             console.log('로그인 성공');
+            $emailWarning.setAttribute('style', 'visibility:hidden;');
+            $pwWarning.setAttribute('style', 'visibility:hidden;');
             const loadedUser = localStorage.getItem(USER_KEY);
             console.log(loadedUser);
             if (loadedUser === null) {
+              console.log('4');
               // userKeyGenerator();
               localStorage.setItem(USER_KEY, user.loginCheck);
             } else {
+              console.log('5');
               keyPass();
             }
             removeLoginPage();
           }
         });
+
       })
       .catch(err => console.error(err));
+      console.log('userInfo', userInfo);
     // if (!userInfo) {
     //   console.log(userInfo);
     // } else {
@@ -102,10 +163,10 @@ function loginDomNodeSettings() {
     const $nickname = e.target[2].value;
     const $pw = e.target[3].value;
     const $pwWarning = e.target[3].nextElementSibling;
-    const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; //대소문자 구분 안하고 특수문자 -_.@ 사용 시 다음 문자열들 패턴을 추가 비교 
 
 
     //회원가입 시도할 때 로직
+    // 수정필요
     if (!$email.match(emailPattern)) {
       console.log('이메일 패턴 일치하지 않음');
       return;
