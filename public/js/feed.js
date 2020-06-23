@@ -29,18 +29,6 @@ function feedDomNodeSettings() {
       case 'slider-right-btn':
         sliderRightHandler($parentPreviouss);
       break;
-      // case 'post-img':
-      //   const $parent = e.target.parentNode;
-      //   // $parent.parentNode.querySelector(".active").classList.remove("active");
-      //   // $parent.parentNode.classList
-      //   if(e.clientX < e.target.offsetWidth / 2) {
-      //     if($parent.style.left === '0%') return;
-      //     $parent.style.left = `${++slidePos * 100}%`;
-      //   } else {
-      //     if($parent.style.left === '-200%') return;
-      //     $parent.style.left = `${--slidePos * 100}%`;
-      //   }
-      // break;
     }
   }
 
