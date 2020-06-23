@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .preview {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+    .obj {
+      width: 500px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  
+  <input type="file" id="file-selector" >
+  <ul class="preview"></ul>
+  <p class="sendART"></p>
+  
+  <script>
+    //
+    const $MSG = document.querySelector('.sendART');
+    const fileSelector = document.getElementById('file-selector');
+    const preview = document.querySelector('.preview');
+    let fileList = [];
+
+    fileSelector.addEventListener('change', (e) => {
+      fileList = [...fileList, ...e.target.files];
+      
+      if (!fileList.length) {
+        $MSG.innerHTML = 'No files selected!';
+      } else if(fileList.length > 3 ){
+        $MSG.innerHTML = '최대 이미지는 3개 입니다 .';
+      } else{
+        console.log('출력 화면이라고 가정해보자.');        
+        handleFiles([...e.target.files]);
+      };
+    
+ 
+      // 유사배열객체
+      const $preview = document.querySelector('.preview');
+      const $removeList = document.querySelector('.removeBtn');
+      const $li = document.querySelector('.li');
+      
+      $preview.onclick =  e  => {
+        if(!e.target.matches('.removeBtn')) return;
+        e.target.parentNode.remove();
+      };
+      console.log(fileList);
+    });
+
+    function handleFiles(files) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        
+        if (!file.type.startsWith('image/')){ continue }
+        const img = document.createElement("img");
+        const list = document.createElement("li")
+        const removeList = document.createElement("button");
+        list.classList.add("li")
+        img.classList.add("obj");
+        img.file = file;
+        removeList.classList.add("removeBtn");
+        list.appendChild(img);
+        list.appendChild(removeList)
+        preview.appendChild(list); // "preview"가 결과를 보여줄 div 출력이라 가정.
+        
+        const reader = new FileReader();
+        reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+        reader.readAsDataURL(file);
+        
+    }}
+   
+  
+
+   </script>
+</body>
+</html>
