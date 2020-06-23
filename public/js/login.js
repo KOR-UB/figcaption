@@ -74,7 +74,8 @@ function loginDomNodeSettings() {
             const loadedUser = localStorage.getItem(USER_KEY);
             console.log(loadedUser);
             if (loadedUser === null) {
-              userKeyGenerator();
+              // userKeyGenerator();
+              localStorage.setItem(USER_KEY, user.loginCheck); 
             } else {
               keyPass();
             }
@@ -132,7 +133,7 @@ function loginDomNodeSettings() {
         } else {
           keyPass();
         }
-        uf = await axios.post('/userDatas', addUserData($email, $pw, $name, $nickname, loginKey));
+        uf = await axios.post('/userDatas', addUserData($email, $pw, $name, $nickname, localStorage.getItem(USER_KEY)));
         removeLoginPage();
       }
     }

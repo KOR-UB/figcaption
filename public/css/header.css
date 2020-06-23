@@ -355,11 +355,11 @@ svg {
 .icon-heart.active path
 {
     transform-origin: center;
-    animation: anim-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+    animation: anim-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
 }
 .heart.active {
   fill: #ed4956;
-  animation: active-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+  animation: active-heart 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
 }
 @keyframes active-heart {
   0% {

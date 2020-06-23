@@ -36,6 +36,43 @@
           ]
         }
       ]
+    },
+    {
+      "email": "yyb97@naver.coa",
+      "password": "voTmdnjem12#",
+      "userName": "user1",
+      "nickName": "Nince",
+      "loginCheck": "iX4cbkoQoqB7kA1J",
+      "boardsCount": 0,
+      "marksCount": 0,
+      "boards": [
+        {
+          "id": 0,
+          "likeCount": 0,
+          "likeCheck": false,
+          "markCheck": false,
+          "content": "",
+          "createTime": {
+            "day": "",
+            "h": "",
+            "m": "",
+            "s": ""
+          },
+          "imgList": [
+            {
+              "id": 0,
+              "src": ""
+            }
+          ],
+          "hashList": [
+            {
+              "id": 0,
+              "value": ""
+            }
+          ]
+        }
+      ],
+      "id": 1
     }
   ],
   "hashTags": [
