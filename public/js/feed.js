@@ -2,6 +2,7 @@
 // import userInfoConnect from './login';
 
 let slidePos = 0;
+let getToken;
 function feedDomNodeSettings() {
   const $postContainer = document.querySelector('.post-container');
 
@@ -46,7 +47,7 @@ async function feedInit() {
   // userInfo = userInfoConnect();
   // console.log(userInfo);
   const Token = localStorage.getItem('Token');
-  const getToken = await axios.get('/userDatas')
+  getToken = await axios.get('/userDatas')
   .then(res => res.data)
   .then(users => users.find(user => user.loginCheck === Token))
   .catch(err => console.error(err));
