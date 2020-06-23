@@ -46,7 +46,7 @@ async function feedInit() {
   // userInfo = userInfoConnect();
   // console.log(userInfo);
   const Token = localStorage.getItem('Token');
-  getToken = await axios.get('/userDatas')
+  const getToken = await axios.get('/userDatas')
   .then(res => res.data)
   .then(users => users.find(user => user.loginCheck === Token))
   .catch(err => console.error(err));
