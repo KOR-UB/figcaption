@@ -41,10 +41,16 @@ function loginDomNodeSettings() {
   const $signUp = $loginPage.querySelector('.sign-up');
   const $returnLoginForm = $loginPage.querySelector('.return-login-form');
   const $loginSignIn = document.querySelector('.sign-in');
+  const $signUpCheck = document.querySelector('.sign-up-check');
   const $loginEmail = document.querySelector('#login-email');
   const $loginEmailWarning = $loginEmail.nextElementSibling;
   const $loginPw = document.querySelector('#login-pw');
   const $loginPwWarning = $loginPw.nextElementSibling;
+  // 회원가입
+  const $joinEmail = document.querySelector('#join-email');
+  const $joinEmailWarning = $joinEmail.nextElementSibling;
+  const $joinPw = document.querySelector('#join-pw');
+  const $joinPwWarning = $joinPw.nextElementSibling;
 
   function removeLoginPage() {
     // feedInit();
@@ -54,25 +60,53 @@ function loginDomNodeSettings() {
   // disabled가 false이면 로그인 가능함
   let emailState = false;
   let pwState = false;
+  let joinEmailState = false;
+  let joinPwState = false;
 
   // 이메일 형식체크
-  $loginEmail.onkeyup = () => {
+  function loginEmailPatternChk(e) {
     console.log('blur : 블러이벤트 일어남');
     $loginSignIn.disabled = true;
+    // 엔터 누를때만 깜빡깜빡 나타나는 현상
     if (!$loginEmail.value.match(emailPattern)) {
       $loginEmailWarning.setAttribute('style', 'display: block;');
       $loginEmailWarning.textContent = '올바른 이메일 형식으로 입력해주세요.';    
     }else {
+      if (e.keyCode === 13) return;
       emailState = true; 
       if (emailState && pwState) {
         $loginSignIn.disabled = false;
       }
       $loginEmailWarning.setAttribute('style', 'visibility:hidden;');
     }
+  }
+
+  function joinEmailPatternChk(e) {
+    console.log('blur : 블러이벤트 일어남');
+    $signUpCheck.disabled = true;
+    // 엔터 누를때만 깜빡깜빡 나타나는 현상
+    if (!$joinEmail.value.match(emailPattern)) {
+      $joinEmailWarning.setAttribute('style', 'display: block;');
+      $joinEmailWarning.textContent = '올바른 이메일 형식으로 입력해주세요.';    
+    }else {
+      if (e.keyCode === 13) return;
+      joinEmailState = true; 
+      if (joinEmailState && joinPwState) {
+        $signUpCheck.disabled = false;
+      }
+      $joinEmailWarning.setAttribute('style', 'visibility:hidden;');
+    }
+  }
+
+  $loginEmail.onkeyup = e => {
+    loginEmailPatternChk(e);
+  };
+  $joinEmail.onkeyup = e => {
+    joinEmailPatternChk(e);
   };
 
   // 비밀번호 형식체크
-  $loginPw.onkeyup = () => {
+  function loginPwPatternChk(e) {
     console.log('keyup : 이벤트 일어남');
     $loginSignIn.disabled = true;
 
@@ -81,13 +115,50 @@ function loginDomNodeSettings() {
       $loginPwWarning.setAttribute('style', 'display: block;');
       $loginPwWarning.textContent = '영문/숫자/특수문자를 조합하여 8자리 이상 입력해주세요.';
     }else {
+      // 엔터 누를때만 깜빡깜빡 나타나는 현상
+      if (e.keyCode === 13) {
+        console.log('?');
+        return;
+      }
       $loginPwWarning.setAttribute('style', 'visibility:hidden;');
+      
       pwState = true; 
       if (emailState && pwState) {
         $loginSignIn.disabled = false;
       }
     }
+  }
+  function joinPwPatternChk(e) {
+    console.log('keyup : 이벤트 일어남');
+    $signUpCheck.disabled = true;
+
+    if (!$joinPw.value.match(passwordPattern) || !$joinPw.value) {
+      console.log('비밀번호 형식 일치하지 않음');
+      $joinPwWarning.setAttribute('style', 'display: block;');
+      $joinPwWarning.textContent = '영문/숫자/특수문자를 조합하여 8자리 이상 입력해주세요.';
+    }else {
+      // 엔터 누를때만 깜빡깜빡 나타나는 현상
+      if (e.keyCode === 13) {
+        console.log('?');
+        return;
+      }
+      $joinPwWarning.setAttribute('style', 'visibility:hidden;');
+      
+      joinPwState = true; 
+      if (joinEmailState && joinPwState) {
+        $signUpCheck.disabled = false;
+      }
+    }
+  }
+
+  $loginPw.onkeyup = e => {
+    loginPwPatternChk(e);
   };
+
+  $joinPw.onkeyup = e => {
+    joinPwPatternChk(e);
+  };
+
 
   
   async function signInHandler(e) {
@@ -151,51 +222,71 @@ function loginDomNodeSettings() {
   }
 
   function signUpHandler(e) {
+    console.log('join on');
     e.preventDefault();
     console.dir(e);
     const $email = e.target[0].value;
     const $emailWarning = e.target[0].nextElementSibling;
     const $name = e.target[1].value;
     const $nickname = e.target[2].value;
+    const $nicknameWarning = e.target[2].nextElementSibling;
     const $pw = e.target[3].value;
     const $pwWarning = e.target[3].nextElementSibling;
 
 
     //회원가입 시도할 때 로직
     // 수정필요
-    if (!$email.match(emailPattern)) {
-      console.log('이메일 패턴 일치하지 않음');
-      return;
-    }
-    if (!$pw.match(passwordPattern)) {
-      console.log('패스워드 패턴 일치하지 않음');
-      // 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 비교
-      $pwWarning.setAttribute('style', 'display: block;');
-      $pwWarning.textContent = '영문/숫자/특수문자를 조합하여 8자리 이상 입력해주세요.';
-      return;
-    }
+    // if (!$email.match(emailPattern)) {
+    //   $emailWarning.setAttribute('style', 'display: block;');
+    //   $emailWarning.textContent = '올바른 이메일 형식으로 입력해주세요.';
+    //   return;
+    // }
+    // if (!$pw.match(passwordPattern)) {
+    //   console.log('패스워드 패턴 일치하지 않음');
+    //   // 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 비교
+    //   $pwWarning.setAttribute('style', 'display: block;');
+    //   $pwWarning.textContent = '영문/숫자/특수문자를 조합하여 8자리 이상 입력해주세요.';
+    //   return;
+    // }
     //이구간에 포스트 로직을 추가해주세욥!
     async function joinKeyPass() {
-      let uf = [];
+      console.log('joinKeyPass');
+      let userEamilFind = [];
+      let userNickFind = [];
 
-      uf = await axios.get('/userDatas')
+      userEamilFind = await axios.get('/userDatas')
         .then(res => res.data)
         .then(users => users.filter(user => {
-          return user.email === $email && user.nickName === $nickname;
+          return user.email === $email;
         }))
         .catch(err => console.error(err));
 
-      if (uf.length > 0) {
-        console.log('중복된 이메일 입니다.')
+      userNickFind = await axios.get('/userDatas')
+      .then(res => res.data)
+      .then(users => users.filter(user => {
+        return user.nickName === $nickname;
+      }))
+      .catch(err => console.error(err));
+      
+      console.log('uf', userEamilFind);
+      if (userEamilFind.length > 0) {
+        $emailWarning.setAttribute('style', 'display: block;');
+        $emailWarning.textContent = '중복된 아이디 입니다.';
+        return;
+      } else if (userNickFind.length > 0) {
+        $nicknameWarning.setAttribute('style', 'display: block;');
+        $nicknameWarning.textContent = '중복된 닉네임 입니다.';
+        return;
       } else {
+        console.log('else');
         const loadedUser = localStorage.getItem(USER_KEY);
         if (loadedUser === null) {
           userKeyGenerator();
         } else {
           keyPass();
         }
-        uf = await axios.post('/userDatas', addUserData($email, $pw, $name, $nickname, localStorage.getItem(USER_KEY)));
-        removeLoginPage();
+        userEamilFind = await axios.post('/userDatas', addUserData($email, $pw, $name, $nickname, localStorage.getItem(USER_KEY)));
+        // removeLoginPage();
       }
     }
     joinKeyPass();

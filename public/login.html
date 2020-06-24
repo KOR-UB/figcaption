@@ -48,17 +48,20 @@
       <button class="sign-in common-btn login" type="submit">로그인</button>
     </form>
     <button class="sign-up common-btn login" type="button">회원가입</button>
-    <form class="sign-up-form" method="POST">
+
+    <form class="sign-up-form" method="POST" novalidate>
       <label for="join-email" class="a11y-hidden">이메일</label>
       <input type="email" name="email" id="join-email" placeholder="이메일 주소" required>
-      <span class="warning-msg email">사용 불가능한 이메일입니다.</span>
+      <span class="warning-msg-wrap"><span class="warning-msg email">사용 불가능한 이메일입니다.</span></span>
       <label for="join-name" class="a11y-hidden">이름</label>
       <input type="text" name="name" id="join-name" placeholder="이름" required>
+      <span class="warning-msg-wrap"></span><span class="warning-msg name">특수문자는 입력할 수 없습니다.</span></span>
       <label for="join-nick" class="a11y-hidden">닉네임</label>
       <input type="text" name="nickname" id="join-nick" placeholder="닉네임" required>
+      <span class="warning-msg-wrap"></span><span class="warning-msg nickname">중복된 닉네임입니다.</span></span>
       <label for="join-pw" class="a11y-hidden">비밀번호</label>
       <input type="password" name="password" id="join-pw" placeholder="비밀번호" minlength="8" maxlength="12" required>
-      <span class="warning-msg password">비밀번호가 일치하지 않습니다.</span>
+      <span class="warning-msg-wrap"></span><span class="warning-msg password"></span></span>
       <button class="sign-up-check common-btn login">가입</button>
     </form>
     <button class="return-login-form common-btn login">돌아가기</button>
