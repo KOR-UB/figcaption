@@ -16,7 +16,6 @@
 
 .post-add-container {
   width: 100vw;
-  height: 400px;
   background-color: #fff;
   border: 0.5px solid #cccccc;
   cursor: pointer;
@@ -36,25 +35,64 @@
 }
 
 .post-area1 {
-  /* width: 600px; */
-  /* width: 100%; */
-  height: 150px;
-  /* padding-bottom: x; */
-  border-bottom: 1px solid #ccc;
+  /* overflow: scroll; */
+  width: 1200px;
+  /* position: relative; */
+  /* margin: 0 auto; */
   display: flex;
-  justify-content: space-between;
+  /*   justify-content: center; */
   align-items: center;
-  padding: 0 20px;
+  padding: 20px;
+  /* animation: test 5s alternate infinite; */
+}
+@keyframes test {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -900px;
+  }
 }
 
-.btn-img {
-  /* display: inline-block; */
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+
+.post-area1 button {
+  position: fixed;
+  transform: translate(0, -15px);
+  width: 30px;
+  height: 30px;
+  line-height: 34px;
+  border-radius: 30px;
+  color: #e2e2e2;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.post-area1 button.prev {
+  left: 20px;
+}
+.post-area1 button.next {
+  right: 20px;
+}
+.slide {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin: 0 10px;
   border: 1px solid #cccccc;
+}
+.slide:first-child {
+  margin-left: 0;
+}
+.btn-img {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin-right: 10px;
+  /* border: 1px solid #cccccc; */
   overflow: hidden;
   position: relative;
+  font-size: 50px;
+  font-weight: 200;
+  color: #ccc;
+  line-height: 150px;
 }
 
 .btn-img-file {
@@ -69,13 +107,14 @@
 }
 
 .post-content {
-  padding: 10px;
+  padding: 10px 20px;
   resize: none;
   display: inline-block;
-  width: 65%;
+  width: 100%;
   height: 100px;
   border: none;
-  /* border: 1px solid; */
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .post-content::placeholder {}

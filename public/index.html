@@ -125,22 +125,44 @@
         </div>
       </li>
     </ul>
-    <div class="create-post">
-      <input type="button" style="display: none;" id="file" class="post-add">
-      <label for="file">
+    <div class="create-post post-add">
+        <span class="a11y-hidden">게시글 추가 버튼</span>
         <i class="fas fa-pencil-alt"></i>
-      </label>
     </div>
     <div class="post">
       <div class="post-add-container">
         <h3 class="post-heading">새 게시물</h3>
         <div class="post-area1">
-          <label for="post-btn-img" class="btn-img">
-            <input id="post-btn-img" type="file" class="btn-img-file a11y-hidden">
-          </label>
-          <!-- <button type="file" class="btn-img ">+</button> -->
-          <textarea type="text" class="post-content" placeholder="문구 입력..."></textarea>
+          <!-- 추가인풋 -->
+          <div class="slide">
+            <label for="post-btn-img" class="btn-img" aria-label="이미지 업로드">+</label>
+            <input id="post-btn-img" type="file" class="btn-img-file">
+          </div>
+          <!-- base64 형식 이미지 -->
+          <div class="slide">
+            <img src="" alt="">
+          </div>
+          <div class="slide">
+            <img src="" alt="">
+          </div>
+          <div class="slide">
+            <img src="" alt="">
+          </div>
+          <div class="slide">
+            <img src="" alt="">
+          </div>
+          <div class="slide">
+            <img src="" alt="">
+          </div>
+          <!-- 슬라이드 컨트롤러 -->
+          <div class="slide-control">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+          </div>
         </div>
+        
+
+        <textarea class="post-content" placeholder="문구 입력..."></textarea>
         <div class="post-area2">
           <p class="post-hash">해시태그 추가</p>
           <input type="text" class="hash-content" placeholder="  # 입력하세요..">

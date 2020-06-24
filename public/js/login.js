@@ -56,15 +56,12 @@ function loginDomNodeSettings() {
   let pwState = false;
 
   // 이메일 형식체크
-  $loginEmail.onblur = e => {
+  $loginEmail.onkeyup = () => {
     console.log('blur : 블러이벤트 일어남');
     $loginSignIn.disabled = true;
     if (!$loginEmail.value.match(emailPattern)) {
-
       $loginEmailWarning.setAttribute('style', 'display: block;');
-      $loginEmailWarning.textContent = '올바른 이메일 형식으로 입력해주세요.';
-
-      
+      $loginEmailWarning.textContent = '올바른 이메일 형식으로 입력해주세요.';    
     }else {
       emailState = true; 
       if (emailState && pwState) {
@@ -75,8 +72,8 @@ function loginDomNodeSettings() {
   };
 
   // 비밀번호 형식체크
-  $loginPw.onblur = e => {
-    console.log('blur : 블러이벤트 일어남');
+  $loginPw.onkeyup = () => {
+    console.log('keyup : 이벤트 일어남');
     $loginSignIn.disabled = true;
 
     if (!$loginPw.value.match(passwordPattern) || !$loginPw.value) {
@@ -90,7 +87,6 @@ function loginDomNodeSettings() {
         $loginSignIn.disabled = false;
       }
     }
-    
   };
 
   
