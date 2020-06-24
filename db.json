@@ -47,6 +47,11 @@
       "marksCount": 0,
       "boards": [
         {
+          "id": 0,
+          "likeCount": 0,
+          "likeCheck": false,
+          "markCheck": false,
+          "content": "lorem",
           "imgList": [
             {
               "id": 1,
@@ -59,6 +64,12 @@
             {
               "id": 3,
               "src": "../img/brand3.jpg"
+            }
+          ],
+          "hashList": [
+            {
+              "id": 0,
+              "value": "#abcd"
             }
           ]
         }

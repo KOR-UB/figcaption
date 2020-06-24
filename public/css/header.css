@@ -412,5 +412,6 @@ svg {
 .heart,
 .msg 
 {
+  margin-right: 8px;
   outline: none;
 }
