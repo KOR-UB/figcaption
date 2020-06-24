@@ -97,8 +97,8 @@ body.error-login {
 .login-page .sign-up:hover {
   box-shadow: 0px 5px 5px 2px rgba(119, 235, 255, 0.2);
 }
-.login-page .sign-up-check:hover::before,
-.login-page .sign-in:hover::before {
+.login-page .sign-up-check:enabled:hover::before,
+.login-page .sign-in:enabled:hover::before {
   left: 100%;
 }
 .login-page .sign-in,
@@ -107,8 +107,8 @@ body.error-login {
   background: skyblue;
   color: #fff;
 }
-.login-page .sign-in:hover,
-.login-page .sign-up-check:hover {
+.login-page .sign-in:enabled:hover,
+.login-page .sign-up-check:enabled:hover {
   background: rgb(48, 124, 185);
 }
 .page-load {

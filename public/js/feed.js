@@ -71,8 +71,11 @@ function createNode(tag, _class = '') {
   return node;
 }
 
-function postRender(user) {
-
+function postRender(board, user) {
+  console.log(board);
+  const { imgList } = board;
+  console.log(imgList);
+  console.log(user);
   const $postCard = createNode('li', 'post-card'),
 
   $postHeader = createNode('div', 'post-header'),
@@ -81,7 +84,7 @@ function postRender(user) {
 
   $postImgContainer = createNode('div', 'post-img-container'),
   $postImgbox = createNode('div', 'post-imgbox'),
-  $postImg = createNode('img', 'post-img'),
+  // $postImg = createNode('img', 'post-img'),
 
   $slideController = createNode('div', 'slide-controller'),
   $sliderLeftBtn = createNode('button', 'slider-left-btn'),
@@ -100,7 +103,7 @@ function postRender(user) {
   $msgPath = createNode('path'),
 
   $centerIcon = createNode('div', 'center-icon'),
-  $itemLight = createNode('div', 'item-light'),
+  // $itemLight = createNode('div', 'item-light'),
 
   $rightIcon = createNode('div', 'right-icon'),
   $mark = createNode('button', 'mark'),
@@ -121,7 +124,12 @@ function postRender(user) {
   $postHeader.appendChild($postNickName);
   
   $postImgContainer.appendChild($postImgbox);
-  $postImgbox.appendChild($postImg); //img
+  imgList.forEach(img => {
+    const $postImg = createNode('img', 'post-img');
+    $postImg.src = img.src;
+    $postImgbox.appendChild($postImg); //img
+  })
+
 
   $slideController.appendChild($sliderLeftBtn);
   $slideController.appendChild($sliderRightBtn);
@@ -134,7 +142,13 @@ function postRender(user) {
   $leftIcon.appendChild($msg);  
   $postIconContainer.appendChild($leftIcon);
 
-  $centerIcon.appendChild($itemLight); //pos
+  imgList.forEach(() => {
+    if (imgList.length === 1) return;
+    const $itemLight = createNode('div', 'item-light');
+    $centerIcon.appendChild($itemLight); //pos;
+    $centerIcon.firstElementChild.classList.add("active");
+  })
+  
   $postIconContainer.appendChild($centerIcon);
 
   $markSvg.appendChild($markPath);
@@ -158,10 +172,6 @@ function postRender(user) {
 
   $postContainer.appendChild($postCard);
   // console.log();
-  
-
-
-
 
   const { nickName, boards } = user;
   // const { likeCheck } = boards;
@@ -178,7 +188,10 @@ async function feedInit() {
   if(!user) window.location.href = './login.html';
   console.log(user);
   feedDomNodeSettings();
-  postRender(user);
+  user.boards.forEach(board => {
+    postRender(board, user);
+  })
+ 
 }
 feedInit();
 

@@ -47,60 +47,18 @@
       "marksCount": 0,
       "boards": [
         {
-          "id": 0,
-          "likeCount": 0,
-          "likeCheck": false,
-          "markCheck": false,
-          "content": "",
-          "createTime": {
-            "day": "",
-            "h": "",
-            "m": "",
-            "s": ""
-          },
           "imgList": [
             {
               "id": 1,
-              "src": "./img/austria.jpg"
+              "src": "../img/brand1.jpg"
             },
             {
               "id": 2,
-              "src": "./img/austria.jpg"
+              "src": "../img/brand2.jpg"
             },
             {
               "id": 3,
-              "src": "./img/austria.jpg"
-            },
-            {
-              "id": 1,
-              "likeCount": 0,
-              "likeCheck": false,
-              "markCheck": false,
-              "content": "",
-              "createTime": {
-                "day": "",
-                "h": "",
-                "m": "",
-                "s": ""
-              },
-              "imgList": [
-                {
-                  "id": 1,
-                  "src": "./img/brand1.jpg"
-                },
-                {
-                  "id": 2,
-                  "src": "./img/brand1.jpg"
-                },
-                {
-                  "id": 3,
-                  "src": "./img/brand1.jpg"
-                }
-          ],
-          "hashList": [
-            {
-              "id": 0,
-              "value": ""
+              "src": "../img/brand3.jpg"
             }
           ]
         }
