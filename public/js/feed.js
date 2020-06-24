@@ -1,18 +1,25 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-case-declarations */
 // import userInfoConnect from './login';
+const Token = localStorage.getItem('Token');
 const $postContainer = document.querySelector('.post-container');
-let slidePos = 0;
-let user;
+let userInfo;
+let postBoards;
+function getSlidePosition() {
+  
+  let slidePos = 0;
+  return slidePos;
+}
+
 function feedDomNodeSettings() {
-  function sliderHandler($PP, pos) {
+  function sliderHandler($PP, pos, length) {
     const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll('.item-light');
     $sliderPosIcons[0].parentNode.querySelector(".active").classList.remove('active');
     $PP.style.left = `${pos * 100}%`;
     if (pos === 0) {
       $PP.nextElementSibling.querySelector(".slider-left-btn").style.visibility = 'hidden';
       $PP.nextElementSibling.querySelector(".slider-right-btn").style.visibility = 'visible';
-    } else if (pos === -1) {
+    } else if (pos >= -(length - 1)) {
       $PP.nextElementSibling.querySelector(".slider-left-btn").style.visibility = 'visible';
       $PP.nextElementSibling.querySelector(".slider-right-btn").style.visibility = 'visible';
     } else {
@@ -21,49 +28,47 @@ function feedDomNodeSettings() {
     }
     const $classNode = $sliderPosIcons[-pos];
     $classNode.classList.add('active');     
-  } 
-
-  async function touchHandler(e) {
+  }  
+  function touchHandler(e) {
+    let $parentPreviouss;
+    let imgLength;
     if (e.target.matches($postContainer.classList)) return;
-    let $parentPreviouss = e.target.parentNode.previousElementSibling;
-    console.log(e.target.className);
     switch (e.target.className) {
       case 'slider-left-btn':
+        $parentPreviouss = e.target.parentNode.previousElementSibling;
+        imgLength = $parentPreviouss.querySelectorAll('img').length - 1;
         if($parentPreviouss.style.left === '0%') return;
-        sliderHandler($parentPreviouss, ++slidePos);
+        sliderHandler($parentPreviouss, ++slidePos, imgLength);
       break;
       case 'slider-right-btn':
-        if($parentPreviouss.style.left === '-200%') return;
-        sliderHandler($parentPreviouss, --slidePos);
+        $parentPreviouss = e.target.parentNode.previousElementSibling;
+        imgLength = $parentPreviouss.querySelectorAll('img').length - 1;
+        if($parentPreviouss.style.left === `-${imgLength * 100}%`) return;
+        sliderHandler($parentPreviouss, --slidePos, imgLength);
       break;
       case 'heart':
       case 'heart active':
-        user.boards[0].likeCheck = user.boards[0].likeCheck ? false : true;
-        user = await axios.patch(`/userDatas/${user.id}`, user)
-        .then(res => res.data)
-        .catch(err => console.error(err));
+        const $card = e.target.parentNode.parentNode.parentNode.parentNode;
+        console.log($card);
         e.target.classList.toggle('active');
         if (user.boards[0].likeCheck) {
-          console.log("!");
           e.target.querySelector('svg > path').setAttribute('d',
             'M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z');
         } else {
-          console.log("?");
           e.target.querySelector('svg > path').setAttribute('d', 'M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z');
-        }
-     
+        }  
       break;
       case 'msg': 
         console.log('메시지');
       break;
     }
   }
-
   function feedEventBinds() {
     $postContainer.addEventListener('click', touchHandler);
   }
   feedEventBinds();
 }
+
 
 function createNode(tag, _class = '') {
   const node = document.createElement(tag);
@@ -88,14 +93,14 @@ function createNode(tag, _class = '') {
   </svg>`;
   }
   node.className = _class;
+
   return node;
 }
 
-function postRender(board, user) {
-  console.log(board);
+function postRender(board) {
   const { imgList, hashList } = board;
-  console.log(imgList);
-  console.log(user);
+    // const { nickName, boards } = user;
+  // const { likeCheck } = boards;
   const $postCard = createNode('li', 'post-card'),
 
   $postHeader = createNode('div', 'post-header'),
@@ -104,7 +109,6 @@ function postRender(board, user) {
 
   $postImgContainer = createNode('div', 'post-img-container'),
   $postImgbox = createNode('div', 'post-imgbox'),
-  // $postImg = createNode('img', 'post-img'),
 
   $slideController = createNode('div', 'slide-controller'),
   $sliderLeftBtn = createNode('button', 'slider-left-btn'),
@@ -115,20 +119,13 @@ function postRender(board, user) {
   
   $leftIcon = createNode('div', 'left-icon'),
   $heart = createNode('button', 'heart'),
-  // $heartSvg = createNode('svg'),
-  // $heartPath = createNode('path'),
 
   $msg = createNode('button', 'msg'),
-  // $msgSvg = createNode('svg'),
-  // $msgPath = createNode('path'),
 
   $centerIcon = createNode('div', 'center-icon'),
-  // $itemLight = createNode('div', 'item-light'),
 
   $rightIcon = createNode('div', 'right-icon'),
   $mark = createNode('button', 'mark'),
-  // $markSvg = createNode('svg'),
-  // $markPath = createNode('path'),
 
   $postTextContainer = createNode('div', 'post-text-container'),
   $heartText = createNode('p', 'heart-text'),
@@ -138,9 +135,10 @@ function postRender(board, user) {
   $plusText = createNode('span', 'plus-text'),
   $longText = createNode('div', 'long-text');
 
+  $postCard.id = board.id;
 
   $profile.src = 'https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=ZMRBdU8i2AoAX_wbci2&oh=12c3cd55d80ceadd2d32df292f236937&oe=5F13AC8F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2';
-  $postNickName.textContent = user.nickName;
+  $postNickName.textContent = userInfo.nickName;
   $postHeader.appendChild($profile);
   $postHeader.appendChild($postNickName);
   
@@ -151,14 +149,11 @@ function postRender(board, user) {
     $postImgbox.appendChild($postImg); //img
   })
 
-
+  $sliderLeftBtn.textContent = '<';
+  $sliderRightBtn.textContent = '>';
   $slideController.appendChild($sliderLeftBtn);
   $slideController.appendChild($sliderRightBtn);
   $postImgContainer.appendChild($slideController);
-  // $heartSvg.appendChild($heartPath);
-  // $heart.appendChild($heartSvg);
-  // $msgSvg.appendChild($msgPath);
-  // $msg.appendChild($msgSvg);
   $leftIcon.appendChild($heart);
   $leftIcon.appendChild($msg);  
   $postIconContainer.appendChild($leftIcon);
@@ -183,9 +178,9 @@ function postRender(board, user) {
   $count.textContent = ` ${board.likeCount}개`;
   $postTextContainer.appendChild($heartText);
   $heartText.appendChild($count);
-  $nick.textContent = user.nickName;
+  $nick.textContent = userInfo.nickName;
   $postTextContainer.appendChild($nick);
-  $hash.textContent = hashList[0].value;
+  $hash.textContent = " #TEST";
   $plusText.textContent = ' 더 보기';
   $nick.appendChild($hash);
   $nick.appendChild($plusText);
@@ -199,26 +194,31 @@ function postRender(board, user) {
 
   $postContainer.appendChild($postCard);
   // console.log();
-
-  const { nickName, boards } = user;
-  // const { likeCheck } = boards;
+}
+async function getUser() {
+  userInfo = await axios.get('/userDatas')
+  .then(res => res.data)
+  .then(users => users.find(user => user.loginCheck === Token))
+  .catch(err => console.error(err));
+  console.log(userInfo)
+  if(!userInfo) window.location.href = './login.html';
+}
+async function getBoard() {
+  postBoards = await axios.get('/boardDatas')
+  .then(res => res.data)
+  .catch(err => console.error(err));
+  console.log(postBoards)
+  postBoards.forEach(board => {
+    postRender(board);
+  })
 }
 // export default 
 async function feedInit() {
   // userInfo = userInfoConnect();
   // console.log(userInfo);
-  const Token = localStorage.getItem('Token');
-  user = await axios.get('/userDatas')
-  .then(res => res.data)
-  .then(users => users.find(user => user.loginCheck === Token))
-  .catch(err => console.error(err));
-  if(!user) window.location.href = './login.html';
-  console.log(user);
+  getUser();
+  getBoard();
   feedDomNodeSettings();
-  user.boards.forEach(board => {
-    postRender(board, user);
-  })
- 
 }
 feedInit();
 

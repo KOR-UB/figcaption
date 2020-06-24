@@ -252,7 +252,7 @@ svg {
 .post-container .post-card .post-imgbox {
   position: relative;
   left: 0;
-  width: 300%;
+  width: 500%;
   max-height: 70vh;
   display: flex;
   transition: 0.5s;
@@ -285,7 +285,7 @@ svg {
 }
 .post-container .post-card .post-imgbox img {
   object-fit: cover;
-  width: 33.3333%;
+  width: 20%;
   min-height: 360px;
   max-height: 450px;
 }

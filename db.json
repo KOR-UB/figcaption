@@ -8,72 +8,16 @@
       "nickName": "ub",
       "loginCheck": "test",
       "boardsCount": 0,
-      "marksCount": 0,
-      "boards": [
-        {
-          "id": 0,
-          "likeCount": 0,
-          "likeCheck": false,
-          "markCheck": false,
-          "content": "lorem",
-          "createTime": {
-            "day": "일",
-            "h": "시간",
-            "m": "분",
-            "s": "초"
-          },
-          "imgList": [
-            {
-              "id": 0,
-              "src": "base64 img url"
-            }
-          ],
-          "hashList": [
-            {
-              "id": 0,
-              "value": "#abcd"
-            }
-          ]
-        }
-      ]
+      "marksCount": 0
     },
     {
       "email": "yyb97@naver.coa",
       "password": "voTmdnjem12#",
-      "userName": "user1",
+      "userName": "PingPong",
       "nickName": "Nince",
       "loginCheck": "iX4cbkoQoqB7kA1J",
       "boardsCount": 0,
       "marksCount": 0,
-      "boards": [
-        {
-          "id": 0,
-          "likeCount": 0,
-          "likeCheck": false,
-          "markCheck": false,
-          "content": "lorem",
-          "imgList": [
-            {
-              "id": 1,
-              "src": "../img/brand1.jpg"
-            },
-            {
-              "id": 2,
-              "src": "../img/brand2.jpg"
-            },
-            {
-              "id": 3,
-              "src": "../img/brand3.jpg"
-            }
-          ],
-          "hashList": [
-            {
-              "id": 0,
-              "value": "#abcd"
-            }
-          ]
-        }
-      ],
       "id": 1
     }
   ],
@@ -81,6 +25,33 @@
     {
       "id": 0,
       "value": "#abcd"
+    }
+  ],
+  "boardDatas": [
+    {
+      "id": 1,
+      "by": "",
+      "likeCount": 0,
+      "likeCheck": false,
+      "markCheck": false,
+      "content": "lorem",
+      "imgList": [
+        {
+          "src": "../img/brand1.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        },
+        {
+          "src": "../img/brand3.jpg"
+        }
+      ]
     }
   ]
 }
