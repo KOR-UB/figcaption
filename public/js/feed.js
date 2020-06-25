@@ -11,7 +11,6 @@ let userInfo;
 let postBoards;
 let slidePos = [];
 
-
 function feedDomNodeSettings() {
   $logoutBtn.onclick = () => {
     $logoutPopup.classList.toggle('out-active');
@@ -123,11 +122,9 @@ function createNode(tag, _class = '') {
   node.className = _class;
   return node;
 }
-
-function postRender(board) {
+ 
+export function postRender(board) {
   const { imgList } = board;
-  console.log(imgList);
-  
   // const { nickName, boards } = user;
   // const { likeCheck } = boards;
   const $postCard = createNode('li', 'post-card'),
@@ -229,30 +226,31 @@ function postRender(board) {
 
   $postContainer.prepend($postCard);
 }
-async function getUser() {
+export async function getUser() {
   userInfo = await axios.get('/userDatas')
     .then(res => res.data)
     .then(users => users.find(user => user.loginCheck === Token)) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
     .catch(err => console.error(err));
     if (!userInfo) window.location.href = './login.html'; //정상적인 값을 할당받지 못할 경우 로그인 페이지로 이동
     $userState.textContent = userInfo.nickName;
+    return postBoards;
 }
-async function getBoard() {
+export async function getBoard() {
   postBoards = await axios.get('/boardDatas') //보드 데이터 가져와서 할당
     .then(res => res.data)
     .catch(err => console.error(err));
-  // postBoards.sort((a, b) => b.id - a.id); //최신순 정렬
-  postBoards.forEach(board => { 
-    slidePos.push(0); //보드 개수만큼 컨트롤러를 제어하는 배열에 0값을 추가 (각 보드 좌표값)
-    postRender(board); //보드를 그려주는 Render 함수 호출 
-  });
+    postBoards.forEach(board => { 
+      slidePos.push(0); //보드 개수만큼 컨트롤러를 제어하는 배열에 0값을 추가 (각 보드 좌표값)
+      postRender(board); //보드를 그려주는 Render 함수 호출 
+    });
+  return postBoards;
 }
 // export default 
 export default  async function feedInit() {
   // userInfo = userInfoConnect();
   // console.log(userInfo);
-  getUser();
-  getBoard();
+  // getUser();
+  // getBoard();
   feedDomNodeSettings();
 }
 // feedInit();

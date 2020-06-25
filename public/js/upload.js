@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 // const $header = document.querySelector('header');
 // const $main = document.querySelector('main');
+import { postRender, getUser, getBoard } from './feed';
+let userInfo = getUser();
+let postBoards = getBoard();
 
 export default function uploadInit() {
   const $postAdd = document.querySelector('.post-add');
@@ -21,14 +24,19 @@ export default function uploadInit() {
   let fileList = [];
   // let userInfo;
   
-  async function getUser() {
-    userInfo = await axios.get('/userDatas')
-      .then(res => res.data)
-      .then(users => users.find(user => user.loginCheck === localStorage.getItem('Token'))) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
-      .catch(err => console.error(err));
-  }
-  getUser();
-  
+  // async function getUser() {
+  //   userInfo = await axios.get('/userDatas')
+  //     .then(res => res.data)
+  //     .then(users => users.find(user => user.loginCheck === localStorage.getItem('Token'))) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
+  //     .catch(err => console.error(err));
+  // }
+  // async function getBoard() {
+  //   postBoards = await axios.get('/boardDatas') //보드 데이터 가져와서 할당
+  //   .then(res => res.data)
+  //   .catch(err => console.error(err));
+  // }
+  // getUser();
+  // getBoard();
   function checkImgLength() {
     if (!fileList.length) {
       $postMsg.textContent = 'No files selected!';
@@ -49,6 +57,7 @@ export default function uploadInit() {
   checkImgLength();
   $btnFile.addEventListener('change', (e) => {
     const size = e.target.files[0].size;
+    console.log(e.target.files[0]);
     if(size > 1000000) {
       alert('이미지 크기를 초과했습니다.')
       return;
@@ -171,7 +180,8 @@ export default function uploadInit() {
       content: $postContent.value,
       imgList: _imgList
     }
-    axios.post('/boardDatas', payload);
+    axios.post('/boardDatas', payload)
+    .catch(err => console.error(err));
     postRender(payload);
     _defaultHandler();
     togglePopup();
