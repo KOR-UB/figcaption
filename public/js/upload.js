@@ -13,7 +13,6 @@ const $postContent = document.querySelector('.post-content');
 const $slideControl = document.querySelector('.slide-control');
 const $slideControlPrev = document.querySelector('.slide-control .prev');
 const $slideControlNext = document.querySelector('.slide-control .next');
-let _imgList = [];
 
 let slideBtnCnt = 0;
 // const $removePost = document.querySelector('.removePost')
@@ -151,15 +150,12 @@ function _idGenerator() {
   return postBoards.length ? Math.max( ...postBoards.map(board => board.id)) + 1 : 1;
 }
 function _defaultHandler() {
-  fileList = [];
-  checkImgLength();
-  slideBtnCnt = 0;
   document.querySelectorAll("li.slide").forEach(item => {
     item.classList.contains('plus') ? true : item.remove();
   });
   $postContent.value = '';
 }
-
+let _imgList = []
 $btnOk.onclick = () => {
   document.querySelectorAll('.newPreview').forEach(item => {
     _imgList.push({
@@ -174,7 +170,6 @@ $btnOk.onclick = () => {
     imgList: _imgList
   }
   axios.post('/boardDatas', payload);
-  slidePos.push(0);
   postRender(payload);
   _defaultHandler();
   togglePopup();
