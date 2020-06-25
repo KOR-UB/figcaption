@@ -324,7 +324,7 @@ svg {
 .post-container .post-card {
   width: 100%;
   /* border-top: 1px solid #a0a0a0; */
-  border-bottom: 1px solid #ccc;
+  border-bottom: 0.5px solid #ccc;
 }
 
 .post-container .post-card .post-header {
@@ -349,6 +349,7 @@ svg {
 .post-container .post-card .post-img-container {
   position: relative;
   width: 100%;
+  border-bottom: 0.5px solid #ccc;
 }
 
 .post-container .post-card .post-img-container .slide-controller {
@@ -380,7 +381,7 @@ svg {
 .post-container .post-card .post-img-container .slide-controller button i {
   pointer-events: none;
   font-size: 1em;
-  color: rgba(209, 209, 209s);
+  color: rgba(209, 209, 209);
 }
 .post-container .post-card .post-imgbox img {
   object-fit: cover;
