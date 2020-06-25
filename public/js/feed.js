@@ -129,9 +129,9 @@ function createNode(tag, _class = '') {
 }
 
 function postRender(board) {
-  const {
-    imgList
-  } = board;
+  const { imgList } = board;
+  console.log(imgList);
+  
   // const { nickName, boards } = user;
   // const { likeCheck } = boards;
   const $postCard = createNode('li', 'post-card'),
@@ -196,11 +196,12 @@ function postRender(board) {
   $postIconContainer.appendChild($leftIcon);
 
   imgList.forEach(() => { //이미지 개수만큼 반복해서 깜빡이 노드를 생성
-    if (imgList.length === 1) return; //이미지 하나면 리턴
-    const $itemLight = createNode('div', 'item-light'); //깜빡이 노드 생성
-    $centerIcon.appendChild($itemLight); //position
+      if (imgList.length === 1) return;
+      const $itemLight = createNode('div', 'item-light'); //깜빡이 노드 생성
+      $centerIcon.appendChild($itemLight); //position
+      $centerIcon.firstElementChild.classList.add("active"); //이미지가 하나가 아닐 
   });
-  if (imgList.length !== 1) {
+  if (imgList.length > 1) {
     $centerIcon.firstElementChild.classList.add("active"); //이미지가 하나가 아닐 경우 첫 번째 깜빡이 노드에 클래스를 추가.
   } else {
     $slideController.remove(); //이미자가 하나일 경우 컨트롤러 제거
@@ -239,9 +240,8 @@ async function getUser() {
     .then(res => res.data)
     .then(users => users.find(user => user.loginCheck === Token)) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
     .catch(err => console.error(err));
-  $userState.textContent = userInfo.nickName;
-  if (!userInfo) window.location.href = './login.html'; //정상적인 값을 할당받지 못할 경우 로그인 페이지로 이동
-
+    if (!userInfo) window.location.href = './login.html'; //정상적인 값을 할당받지 못할 경우 로그인 페이지로 이동
+    $userState.textContent = userInfo.nickName;
 }
 async function getBoard() {
   postBoards = await axios.get('/boardDatas') //보드 데이터 가져와서 할당
@@ -265,7 +265,6 @@ feedInit();
 
 $logoutBtn.onclick = () => {
   $logoutPopup.classList.toggle('out-active');
-
 };
 $logoutCheck.onclick = e => {
   if (e.target.className == 'logout-yes') {
@@ -274,7 +273,6 @@ $logoutCheck.onclick = e => {
   } else {
     $logoutPopup.classList.toggle('out-active');
   }
-
 }
 
 // setTimeout(() => {
