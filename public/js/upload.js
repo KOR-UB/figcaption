@@ -180,6 +180,7 @@ $postAdd.onclick = () => {
   togglePopup();
 }
 $btnCancle.onclick = () => {
+  _defaultHandler();
   togglePopup();
 }
 

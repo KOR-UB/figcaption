@@ -66,12 +66,11 @@
     </form>
     <button class="return-login-form common-btn login">돌아가기</button>
   </div>
-  <script>
-    setTimeout(() => {
-      document.querySelector(".page-load").remove();
-    }, 1000);
-  </script>
   <script src="./js/login.js"></script>
+  <script>
+    window.onload = () => {
+     document.querySelector(".page-load").remove();
+    }
+   </script>
 </body>
-
 </html>
