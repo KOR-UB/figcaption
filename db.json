@@ -31,6 +31,17 @@
       "boardsCount": 0,
       "marksCount": 0,
       "id": 2
+    },
+    {
+      "email": "yyb97@naver.cop",
+      "password": "voTmdnjem12#",
+      "userName": "PingPong",
+      "nickName": "asda",
+      "loginCheck": "l9BvvzxPpZTQWVKi",
+      "boardsCount": 0,
+      "marksCount": 0,
+      "readBoards": [],
+      "id": 3
     }
   ],
   "hashTags": [

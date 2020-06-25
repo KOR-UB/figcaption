@@ -21,7 +21,6 @@ function feedDomNodeSettings() {
       $PP.nextElementSibling.querySelector(".slider-left-btn").style.visibility = 'visible';
       $PP.nextElementSibling.querySelector(".slider-right-btn").style.visibility = 'hidden';
     }
-    console.log(-pos);
     const $classNode = $sliderPosIcons[-pos];
     $classNode.classList.add('active');     
   }  
