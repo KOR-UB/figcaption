@@ -358,15 +358,21 @@ svg {
 }
 
 .post-container .post-card .post-img-container .slide-controller button {
-  color: #fff;
-  background: rgb(90, 90, 90);
   width: 40px;
   height: 40px;
   margin: 0px 8px;
   border-radius: 50%;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.603);
 }
-
+.post-container .post-card .post-img-container .slide-controller button i {
+  pointer-events: none;
+  font-size: 1em;
+  color: rgba(209, 209, 209s);
+}
 .post-container .post-card .post-imgbox img {
   object-fit: cover;
   width: 20%;
@@ -440,7 +446,7 @@ svg {
   position: absolute;
   top: 0;
   left: 0;
-  width: 33.3333%;
+  width: 100%;
   height: 100%;
 }
 
