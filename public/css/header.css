@@ -247,12 +247,26 @@ header .cam-logo label {
 .logout-popup {
   position: absolute;
   text-align: center;
-  top: 30px;
+
+  top: 35px;
   right: 20px;
   width: 200px;
-  height: 40px;
-  border: 1px solid #ed4956;
+  height: 60px;
+  border: 1px solid #cccccc;
   background-color: #ffff;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.logout-popup p {
+  font-size: 14px;
+  margin: 10px;
+}
+
+.logout-check>button {
+  font-weight: bold;
+  color: rgb(52, 120, 197);
+  width: 70px;
 }
 
 .out-active {
