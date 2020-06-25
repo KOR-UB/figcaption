@@ -155,7 +155,7 @@ function postRender(board) {
   $postCard.id = board.id; //li에 id를 board에서 가져온 id로 재할당
 
   $profile.src = 'https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=ZMRBdU8i2AoAX_wbci2&oh=12c3cd55d80ceadd2d32df292f236937&oe=5F13AC8F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2'; //프로필 이미지 경로
-  $postNickName.textContent = userInfo.nickName; //로그인 중인 유저 닉네임 할당
+  $postNickName.textContent = board.by; //보드를 게시한 유저 닉네임 할당
   $postHeader.appendChild($profile);
   $postHeader.appendChild($postNickName);
   
@@ -198,7 +198,7 @@ function postRender(board) {
   $count.textContent = ` ${board.likeCount}개`; //좋아요 개수
   $postTextContainer.appendChild($heartText);
   $heartText.appendChild($count);
-  $nick.textContent = userInfo.nickName; //닉네임
+  $nick.textContent = board.by; //닉네임
   $postTextContainer.appendChild($nick);
   $hash.textContent = " #TEST"; //해시
   $plusText.textContent = ' 더 보기';
@@ -241,8 +241,6 @@ async function feedInit() {
   feedDomNodeSettings();
 }
 feedInit();
-
-
 
 
 // setTimeout(() => {
