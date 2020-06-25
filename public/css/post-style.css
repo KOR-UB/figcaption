@@ -36,10 +36,13 @@
 
 .post .post-area1 {
   /* overflow: hidden; */
-  width: 1200px;
+  transition: transform 0.5s;
+  
+  width: 100%;
   position: relative;
+  white-space: nowrap;
   /* margin: 0 auto; */
-  display: flex;
+/*   display: flex; */
   /*   justify-content: center; */
   align-items: center;
   padding: 20px;
@@ -85,11 +88,16 @@
   right: 20px;
 }
 
+.slide-control button.hidden {
+  display: none;
+}
+
 .slide {
+  position: relative;
   display: inline-block;
-  width: 150px;
-  height: 150px;
-  margin: 0 10px;
+  width: 140px;
+  height: 140px;
+  margin: 0 6px;
   border: 1px solid #cccccc;
 }
 
@@ -100,9 +108,9 @@
 /* 추가하는애 상위 */
 .btn-img {
   display: inline-block;
-  width: 150px;
-  height: 150px;
-  margin-right: 10px;
+  width: 140px;
+  height: 140px;
+  margin-right: 6px;
   /* border: 1px solid #cccccc; */
   overflow: hidden;
   font-size: 50px;
@@ -150,10 +158,18 @@
   height: 100%;
 }
 
+.removePost::before {
+  content: 'x';
+  color: #fff;
+  line-height: 30px;
+}
 .removePost {
-  background-color: tomato;
-  width: 15px;
-  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #a2a2a287;
+  width: 30px;
+  height: 30px;
 }
 
 .post-content {

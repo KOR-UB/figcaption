@@ -12,7 +12,7 @@ const $btnOk = document.querySelector('.btn-ok');
 const $postContent = document.querySelector('.post-content');
 // const $removePost = document.querySelector('.removePost')
 let fileList = [];
-let userInfo;
+// let userInfo;
 
 async function getUser() {
   userInfo = await axios.get('/userDatas')
@@ -21,6 +21,7 @@ async function getUser() {
   .catch(err => console.error(err));
 }
 getUser();
+
 function checkImgLength() {
   if (!fileList.length) {
     $postMsg.textContent = 'No files selected!';
@@ -54,9 +55,13 @@ $btnFile.addEventListener('change', (e) => {
     console.log('필터 지나온 지점');
     console.log(fileList);
     checkImgLength();
+    // 슬라이드
+    makeImgSlide(e);
+    $slideControlPrev.click();
   }
   checkImgLength();
   handleFiles([...e.target.files]);
+  $slideControlNext.classList.remove('hidden');
 })
 
 //버튼 누르면 삭제됨
@@ -101,6 +106,43 @@ function handleFiles(files) {
 
   }
 }
+
+const $slideControl = document.querySelector('.slide-control');
+const $slideControlPrev = document.querySelector('.slide-control .prev');
+const $slideControlNext = document.querySelector('.slide-control .next');
+let slideBtnCnt = 0;
+
+function makeImgSlide(e) {
+  if (e.target.className === 'prev') {
+    --slideBtnCnt;
+    $postArea1.setAttribute('style', `transform: translateX(-${140 * slideBtnCnt}px)`);
+    console.log(slideBtnCnt);
+  }
+  if (e.target.className === 'next') {
+    ++slideBtnCnt;
+    $postArea1.setAttribute('style', `transform: translateX(-${140 * slideBtnCnt}px)`);
+  }
+  // 버튼 노출
+  let slideLength = $postArea1.querySelectorAll('.slide').length;
+  // < 불가능
+  if (slideBtnCnt <= 0 || slideLength > 2) {
+    $slideControlPrev.classList.add('hidden');
+    $slideControlNext.classList.remove('hidden');
+  }
+  // < > 둘다가능
+  if (slideBtnCnt > 0) {
+    $slideControlPrev.classList.remove('hidden');
+    $slideControlNext.classList.remove('hidden');
+  }
+  // > 불가능
+  if (slideBtnCnt === 5 || (slideLength - 3) < slideBtnCnt) {
+    $slideControlNext.classList.add('hidden');
+  }
+}
+$slideControl.onclick = e => {
+  makeImgSlide(e);
+};
+
 
 let _imgList = []
 $btnOk.onclick = () => {
