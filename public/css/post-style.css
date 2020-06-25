@@ -18,7 +18,7 @@
   width: 100vw;
   background-color: #fff;
   border: 0.5px solid #cccccc;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .post-heading {
@@ -34,8 +34,8 @@
   margin: 0 auto;
 }
 
-.post-area1 {
-  /* overflow: scroll; */
+.post .post-area1 {
+  /* overflow: hidden; */
   width: 1200px;
   /* position: relative; */
   /* margin: 0 auto; */
@@ -45,17 +45,25 @@
   padding: 20px;
   /* animation: test 5s alternate infinite; */
 }
+
 @keyframes test {
   0% {
     left: 0;
   }
+
   100% {
     left: -900px;
   }
 }
 
+/* 슬라이드 버튼 */
+.slide-control {
+  position: relative;
+  background-color: tomato;
 
-.post-area1 button {
+}
+
+.slide-control button {
   position: fixed;
   transform: translate(0, -15px);
   width: 30px;
@@ -65,12 +73,18 @@
   color: #e2e2e2;
   background-color: rgba(0, 0, 0, 0.6);
 }
-.post-area1 button.prev {
+
+.slide-control button.prev {
+  top: 40%;
+  /* 좌표 다시 지정해야함 버튼 */
   left: 20px;
 }
-.post-area1 button.next {
+
+.slide-control button.next {
+  top: 40%;
   right: 20px;
 }
+
 .slide {
   display: inline-block;
   width: 150px;
@@ -78,9 +92,12 @@
   margin: 0 10px;
   border: 1px solid #cccccc;
 }
+
 .slide:first-child {
   margin-left: 0;
 }
+
+/* 추가하는애 상위 */
 .btn-img {
   display: inline-block;
   width: 150px;
@@ -93,10 +110,18 @@
   font-weight: 200;
   color: #ccc;
   line-height: 150px;
+  background-color: #0095f6;
+  cursor: pointer;
 }
 
-.btn-img-file {
+.btn-img-max {
+  display: none;
+}
 
+/* 추가 인풋 */
+.btn-img-file {
+  background-color: tomato;
+  cursor: pointer;
   position: absolute;
   top: 0;
   left: 0;
@@ -104,6 +129,18 @@
   width: 0.1px;
   height: 0.1px;
   overflow: hidden;
+}
+
+/* 추가된 프리뷰 + 프리뷰 삭제 버튼 */
+.newPreview {
+  width: 100%;
+  height: 100%;
+}
+
+.removePost {
+  background-color: tomato;
+  width: 15px;
+  height: 15px;
 }
 
 .post-content {

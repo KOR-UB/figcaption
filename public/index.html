@@ -107,7 +107,9 @@
             <div class="right-icon">
               <button class="mark">
                 <svg fill="#262626" height="22" viewBox="0 0 48 48" width="22">
-                  <path d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 29 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM24 26c.8 0 1.6.3 2.2.9l15.8 16V3H6v39.9l15.8-16c.6-.6 1.4-.9 2.2-.9z"></path>
+                  <path
+                    d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 29 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM24 26c.8 0 1.6.3 2.2.9l15.8 16V3H6v39.9l15.8-16c.6-.6 1.4-.9 2.2-.9z">
+                  </path>
                 </svg>
               </button>
             </div>
@@ -115,7 +117,7 @@
           <div class="post-text-container">
             <p class="heart-text">좋아요 <span class="count">0개</span></p>
             <p class="nick">figure <span class="hash">#figcaption</span>
-            <span class="plus-text"> 더 보기</span></p>
+              <span class="plus-text"> 더 보기</span></p>
             <div class="long-text">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus sapiente at harum. Sapiente iste maiores,
               debitis pariatur qui voluptatibus consectetur ullam rem quas expedita possimus laborum in tenetur officia
@@ -126,47 +128,38 @@
       </li>
     </ul>
     <div class="create-post post-add">
-        <span class="a11y-hidden">게시글 추가 버튼</span>
-        <i class="fas fa-pencil-alt"></i>
+      <span class="a11y-hidden">게시글 추가 버튼</span>
+      <i class="fas fa-pencil-alt"></i>
     </div>
     <div class="post">
       <div class="post-add-container">
         <h3 class="post-heading">새 게시물</h3>
-        <div class="post-area1">
+        <p class="post-warning-msg">아녕ㅇㅇ</p>
+        <ul class="post-area1">
+
           <!-- 추가인풋 -->
-          <div class="slide">
+          <li class="slide">
             <label for="post-btn-img" class="btn-img" aria-label="이미지 업로드">+</label>
             <input id="post-btn-img" type="file" class="btn-img-file">
-          </div>
+          </li>
           <!-- base64 형식 이미지 -->
-          <div class="slide">
+
+          <!-- <li class="slide">
             <img src="" alt="">
-          </div>
-          <div class="slide">
-            <img src="" alt="">
-          </div>
-          <div class="slide">
-            <img src="" alt="">
-          </div>
-          <div class="slide">
-            <img src="" alt="">
-          </div>
-          <div class="slide">
-            <img src="" alt="">
-          </div>
+          </li> -->
           <!-- 슬라이드 컨트롤러 -->
-          <div class="slide-control">
-            <button class="prev">&lt;</button>
-            <button class="next">&gt;</button>
-          </div>
+
+        </ul>
+        <div class="slide-control">
+          <button class="prev">&lt;</button>
+          <button class="next">&gt;</button>
         </div>
-        
 
         <textarea class="post-content" placeholder="문구 입력..."></textarea>
-        <div class="post-area2">
+        <!-- <div class="post-area2">
           <p class="post-hash">해시태그 추가</p>
           <input type="text" class="hash-content" placeholder="  # 입력하세요..">
-        </div>
+        </div> -->
         <button type="button" class="btn-cancle">취소</button>
         <button type="button" class="btn-ok">공유</button>
       </div>
