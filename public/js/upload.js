@@ -12,15 +12,16 @@ const $btnOk = document.querySelector('.btn-ok');
 const $postContent = document.querySelector('.post-content');
 // const $removePost = document.querySelector('.removePost')
 let fileList = [];
-let userInfo;
+// let userInfo;
 
 async function getUser() {
   userInfo = await axios.get('/userDatas')
-  .then(res => res.data)
-  .then(users => users.find(user => user.loginCheck === localStorage.getItem('Token'))) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
-  .catch(err => console.error(err));
+    .then(res => res.data)
+    .then(users => users.find(user => user.loginCheck === localStorage.getItem('Token'))) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
+    .catch(err => console.error(err));
 }
 getUser();
+
 function checkImgLength() {
   if (!fileList.length) {
     $postMsg.textContent = 'No files selected!';
@@ -105,7 +106,9 @@ function handleFiles(files) {
 let _imgList = []
 $btnOk.onclick = () => {
   document.querySelectorAll('.newPreview').forEach(item => {
-    _imgList.push({src: item.src});
+    _imgList.push({
+      src: item.src
+    });
   })
   const payload = {
     by: userInfo.nickName,

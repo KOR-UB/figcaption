@@ -3,9 +3,15 @@
 // import userInfoConnect from './login';
 const Token = localStorage.getItem('Token');
 const $postContainer = document.querySelector('.post-container');
+const $userState = document.querySelector('.user-name-state');
+const $logoutBtn = document.querySelector('.logout-btn');
+const $logoutPopup = document.querySelector('.logout-popup');
+const $logoutCheck = document.querySelector('.logout-check');
 let userInfo;
 let postBoards;
 let slidePos = [];
+
+
 function feedDomNodeSettings() {
   function sliderHandler($PP, pos, length) {
     const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll('.item-light');
@@ -22,8 +28,8 @@ function feedDomNodeSettings() {
       $PP.nextElementSibling.querySelector(".slider-right-btn").style.visibility = 'hidden';
     }
     const $classNode = $sliderPosIcons[-pos];
-    $classNode.classList.add('active');     
-  }  
+    $classNode.classList.add('active');
+  }
   async function changeHeart(boardId, bool) {
     // const readObj = {
     //   readUser: {
@@ -43,17 +49,17 @@ function feedDomNodeSettings() {
         $card = e.target.parentNode.parentNode.parentNode;
         $parentPreviouss = e.target.parentNode.previousElementSibling;
         imgLength = $parentPreviouss.querySelectorAll('img').length - 1;
-        if($parentPreviouss.style.left === '0%') return;
+        if ($parentPreviouss.style.left === '0%') return;
         sliderHandler($parentPreviouss, ++slidePos[+$card.id - 1], imgLength);
-      break;
+        break;
       case 'slider-right-btn':
         $card = e.target.parentNode.parentNode.parentNode;
         $parentPreviouss = e.target.parentNode.previousElementSibling;
         imgLength = $parentPreviouss.querySelectorAll('img').length - 1;
-        if($parentPreviouss.style.left === `-${imgLength * 100}%`) return;
+        if ($parentPreviouss.style.left === `-${imgLength * 100}%`) return;
         sliderHandler($parentPreviouss, --slidePos[+$card.id - 1], imgLength);
-        
-      break;
+
+        break;
       case 'heart':
       case 'heart active':
         $card = e.target.parentNode.parentNode.parentNode.parentNode; //클릭한 게시물에 li노드 가져오기
@@ -62,8 +68,10 @@ function feedDomNodeSettings() {
         } else {
           changeHeart($card.id, false);
         }
-        const { readBoards } = userInfo;
-        
+        const {
+          readBoards
+        } = userInfo;
+
         console.log(readBoards);
         console.log(userInfo);
         e.target.classList.toggle('active');
@@ -73,13 +81,14 @@ function feedDomNodeSettings() {
         // } else {
         //   e.target.querySelector('svg > path').setAttribute('d', 'M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z');
         // }  
-      break;
+        break;
       case 'mark':
       case "mark active":
         console.log("북마크");
-      break;
+        break;
     }
   }
+
   function feedEventBinds() {
     $postContainer.addEventListener('click', touchHandler);
   }
@@ -96,13 +105,13 @@ function createNode(tag, _class = '') {
       d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
     </path>
   </svg>`;
-  // } else if (tag === 'button' && _class === 'msg') {
-  //   node.innerHTML = `
-  //   <svg fill="#262626" height="22" viewBox="0 0 48 48" width="22">
-  //   <path clip-rule="evenodd"
-  //     d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z"
-  //     fill-rule="evenodd"></path>
-  // </svg>`;
+    // } else if (tag === 'button' && _class === 'msg') {
+    //   node.innerHTML = `
+    //   <svg fill="#262626" height="22" viewBox="0 0 48 48" width="22">
+    //   <path clip-rule="evenodd"
+    //     d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z"
+    //     fill-rule="evenodd"></path>
+    // </svg>`;
   } else if (tag === 'button' && _class === 'mark') {
     node.innerHTML = `
     <svg fill="#262626" height="22" viewBox="0 0 48 48" width="22">
@@ -115,42 +124,44 @@ function createNode(tag, _class = '') {
 }
 
 function postRender(board) {
-  const { imgList } = board;
-    // const { nickName, boards } = user;
+  const {
+    imgList
+  } = board;
+  // const { nickName, boards } = user;
   // const { likeCheck } = boards;
   const $postCard = createNode('li', 'post-card'),
 
-  $postHeader = createNode('div', 'post-header'),
-  $profile = createNode('img', 'profile'),
-  $postNickName = createNode('p', 'post-nickname'),
+    $postHeader = createNode('div', 'post-header'),
+    $profile = createNode('img', 'profile'),
+    $postNickName = createNode('p', 'post-nickname'),
 
-  $postImgContainer = createNode('div', 'post-img-container'),
-  $postImgbox = createNode('div', 'post-imgbox'),
+    $postImgContainer = createNode('div', 'post-img-container'),
+    $postImgbox = createNode('div', 'post-imgbox'),
 
-  $slideController = createNode('div', 'slide-controller'),
-  $sliderLeftBtn = createNode('button', 'slider-left-btn'),
-  $sliderRightBtn = createNode('button', 'slider-right-btn'),
+    $slideController = createNode('div', 'slide-controller'),
+    $sliderLeftBtn = createNode('button', 'slider-left-btn'),
+    $sliderRightBtn = createNode('button', 'slider-right-btn'),
 
-  $postContent = createNode('div', 'post-content'),
-  $postIconContainer = createNode('div', 'post-icon-container'),
-  
-  $leftIcon = createNode('div', 'left-icon'),
-  $heart = createNode('button', 'heart'),
+    $postContent = createNode('div', 'post-content'),
+    $postIconContainer = createNode('div', 'post-icon-container'),
 
-  // $msg = createNode('button', 'msg'),
+    $leftIcon = createNode('div', 'left-icon'),
+    $heart = createNode('button', 'heart'),
 
-  $centerIcon = createNode('div', 'center-icon'),
+    // $msg = createNode('button', 'msg'),
 
-  $rightIcon = createNode('div', 'right-icon'),
-  $mark = createNode('button', 'mark'),
+    $centerIcon = createNode('div', 'center-icon'),
 
-  $postTextContainer = createNode('div', 'post-text-container'),
-  $heartText = createNode('p', 'heart-text'),
-  $count = createNode('span', 'count'),
-  $nick = createNode('p', 'nick'),
-  $hash = createNode('span', 'hash'),
-  $plusText = createNode('span', 'plus-text'),
-  $longText = createNode('div', 'long-text');
+    $rightIcon = createNode('div', 'right-icon'),
+    $mark = createNode('button', 'mark'),
+
+    $postTextContainer = createNode('div', 'post-text-container'),
+    $heartText = createNode('p', 'heart-text'),
+    $count = createNode('span', 'count'),
+    $nick = createNode('p', 'nick'),
+    $hash = createNode('span', 'hash'),
+    $plusText = createNode('span', 'plus-text'),
+    $longText = createNode('div', 'long-text');
 
   $postCard.id = board.id; //li에 id를 board에서 가져온 id로 재할당
 
@@ -158,7 +169,7 @@ function postRender(board) {
   $postNickName.textContent = board.by; //보드를 게시한 유저 닉네임 할당
   $postHeader.appendChild($profile);
   $postHeader.appendChild($postNickName);
-  
+
   $postImgContainer.appendChild($postImgbox);
   imgList.forEach(img => { //이미지 개수만큼 반복해서 이미지 노드를 생성하며 src에 할당
     const $postImg = createNode('img', 'post-img');
@@ -186,7 +197,7 @@ function postRender(board) {
     $slideController.remove(); //이미자가 하나일 경우 컨트롤러 제거
   }
   $postIconContainer.appendChild($centerIcon);
-  
+
   // $markSvg.appendChild($markPath);
   // $mark.appendChild($markSvg)
   $rightIcon.appendChild($mark);
@@ -217,17 +228,19 @@ function postRender(board) {
 }
 async function getUser() {
   userInfo = await axios.get('/userDatas')
-  .then(res => res.data)
-  .then(users => users.find(user => user.loginCheck === Token)) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
-  .catch(err => console.error(err));
-  if(!userInfo) window.location.href = './login.html'; //정상적인 값을 할당받지 못할 경우 로그인 페이지로 이동
+    .then(res => res.data)
+    .then(users => users.find(user => user.loginCheck === Token)) //로컬 스토리지 정보와 일치한지 확인한 후 있으면 userInfo에 객체로 할당
+    .catch(err => console.error(err));
+  $userState.textContent = userInfo.nickName;
+  if (!userInfo) window.location.href = './login.html'; //정상적인 값을 할당받지 못할 경우 로그인 페이지로 이동
+
 }
 async function getBoard() {
   postBoards = await axios.get('/boardDatas') //보드 데이터 가져와서 할당
-  .then(res => res.data)
-  .catch(err => console.error(err));
+    .then(res => res.data)
+    .catch(err => console.error(err));
   postBoards.sort((a, b) => b.id - a.id); //최신순 정렬
-  postBoards.forEach(board => { 
+  postBoards.forEach(board => {
     slidePos.push(0); //보드 개수만큼 컨트롤러를 제어하는 배열에 0값을 추가 (각 보드 좌표값)
     postRender(board); //보드를 그려주는 Render 함수 호출 
   });
@@ -242,6 +255,19 @@ async function feedInit() {
 }
 feedInit();
 
+$logoutBtn.onclick = () => {
+  $logoutPopup.classList.toggle('out-active');
+
+};
+$logoutCheck.onclick = e => {
+  if (e.target.className == 'logout-yes') {
+    localStorage.removeItem('Token');
+    window.location.href = '/login.html';
+  } else {
+    $logoutPopup.classList.toggle('out-active');
+  }
+
+}
 
 // setTimeout(() => {
 //   document.querySelector('.login-page").classList.add("active");
