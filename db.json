@@ -62,75 +62,78 @@
   "boardDatas": [
     {
       "id": 1,
-      "by": "짱구",
+      "by": "IU",
       "likeCount": 0,
       "content": "lorem",
       "imgList": [
         {
-          "src": "../img/brand1.jpg"
+          "src": "https://ww.namu.la/s/65f8c2198d2433b464f8a410a43174ed44e13d0863daebe7ce025089360ecc932fdb6dd7af01ad32c906d3f577a692e6f8116f14371a08171a21db191a09098187812f932fc008152789c968692126469b90eb0f9fa7d983726821ee0d3f67b070308057b5a1bf13cb2bdd14a4b36fe9"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "//ww.namu.la/s/bded2b2e08e690ab4dafcf6931ca23742efa29aba60d55350816c3441e0d6208849b946c8d683aed2850de028019702746ab51626cc3d4a036d7c0d550c8d7c50301ed557536e60fd5a3aad3cd836ef9424bf2693a0bf815bbd8debbf6e98724"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "//w.namu.la/s/435956cb028808dfb02861f48564d2f29fbd34b79b0549ebe8ea391d03ea039824ccd45e639390391dc487b5ace8c542f2115590fbca9238870a13e3fb4c4a5cc4132be1ba3004edb84cf77efbef8a035f08372bb4ccd3395f12b6daa8aca337d0a40b58b2665bee98a67b9f6c70b214"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "//w.namu.la/s/ac58e0d14b36658f58b049ccc2b441e162683d7659857e46350e7b87bd8c8635259468694a7e45be30cd4bb9a2b433fc58aa0547c400b8debb3636541f15ded3b3b780069fac8f4d268ece35b1380479f618b283259d1adf85ba29072116559015627c5da42cf465da5ff26f50a14fb4"
         },
         {
-          "src": "../img/brand3.jpg"
+          "src": "//ww.namu.la/s/32ba23f114a74427117b1e89a43ac8aa6c7cb4e2c57ce4a0ea33bef0014370671d2e361cb8d8bfcbf3a51b041569e4791fc35c9ea87cecc443adeb1db3a4ab9c7fbc2204601e50d3908b4ddec8be50951740584388dbe8edfc5b56a74ee32481f09084bf4a05a08d691130abee47160c"
         }
       ]
     },
     {
       "id": 2,
-      "by": "철수",
+      "by": "BTS",
       "likeCount": 0,
       "content": "lorem",
       "imgList": [
         {
-          "src": "../img/brand1.jpg"
+          "src": "//ww.namu.la/s/f0431e9189df2b8cbe4d682379dc074e3c2163c504c9fbd02c863c60dade2435f757f5297a67d3a205414d792cea06d806488942ec1c9be6e6d09b98cff56953211c85ec41cf41276cc313927bf2878947fa1e8eea15f693a97d50b1e74633bc04d0cbced4ee73a0b3c72452bc5cf79e"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "https://w.namu.la/s/ab96c72e4a855f2865894347deacbe639f0aaf4fe606e8254ca5ddc8b740b33ba088ce8910f080313e87f186ff0e7a0e6c88e6029a65100e607092bfa9e0054fcb0035545a0068cef731bfc39fa11d18e09a341f2443c95f58a8083a866eaaa4174cdc12d835d9c0abf5ef1286adb5f7"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "https://w.namu.la/s/3934ecb7e26e9101bfc8910eb96af31de6fbdfa66952298f895625450fd6375c9c18c2d5e531f6d459637d1be2a9f9aba6c5b33c4b3356bc08a6b1391d8c8b0a777143ab146d162436cc094f351c276d36dc8685d4ecae187815926e6b6a478a"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "https://ww.namu.la/s/cc778fbc66b2c939c175714eb407dff1deaaffeb931305f9eebfce19d162fbc0ea5380b34a5e2f9c9ab0570f5ffc6beb3ca81bcd9d220b046ed98cc4b55b0853dd2ba9a5c19b5c0f4ebee3ddab06e67ca1525e895786f65dcc985adbc1944257"
         }
       ]
     },
     {
       "id": 3,
-      "by": "훈이",
+      "by": "게임 채널",
       "likeCount": 0,
       "content": "lorem",
       "imgList": [
         {
-          "src": "../img/brand1.jpg"
+          "src": "https://ww.namu.la/s/bbc19cae23c1b0bdda79260ef0077955ce3b267687ccc3f83bd39c05a0b4d4f4eb122f725d2474a16fb09004d2ad48b2d1b988e0d1c91ad332da8bd2b5923ef863a710248bead59481e988761ecd1e24f6ba18179bc4398ba1262338a99f294de328a9b5b32aa26429e9f6636fcf2d62"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "https://w.namu.la/s/d32bdd41d2b2d7b8ea1044e323e0e8e86d7856e52024c394d9a02754a3b595466a0a8f0bf69b111bdc491173a571d101678dd0e785417ada40e075303b72c0feb7e6097a6f3ac3436192bd86235e3ce4b49452ffd88d0dcb53f1c3e53ac0a3e4604f4c78d7eecca9e04d8c6b82203a80"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "https://ww.namu.la/s/94ee9c8beda1bd2bfab96158c6922e740c45eea81b4bf9411679515d5a98088d2024ea2fecc82c009a405036fc1d810db50f8949b5ace734fb62274e1623e47e7372033daa3c50dcd0a627bee50f52fa63bac464d9c6ffb6be02e430f51295485b689faa5e75132cb82a44947bfbeab7"
         }
       ]
     },
     {
       "id": 4,
-      "by": "유리",
+      "by": "봉준호",
       "likeCount": 0,
       "content": "lorem",
       "imgList": [
         {
-          "src": "../img/brand1.jpg"
+          "src": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AAG0Bjk.img?h=0&w=720&m=6&q=60&u=t&o=f&l=f"
         },
         {
-          "src": "../img/brand2.jpg"
+          "src": "https://w.namu.la/s/82a8b26580e72fff5a1f39eff43a8150072181c5c9e708b0c70c1c679d73eade464e3142e07e9a85bc3e7a871ebb522569a21e8c1e65701e3a1f488c9f850c0004a6d1d1b90ef1d2b9c966053866fada8861e521bcd3c148da38891c9169ca53904154362b451faace2a3210bd2670cc"
+        },
+        {
+          "src": "https://ww.namu.la/s/0e81a3b081a7af16b3d7fe6df00e2f271e9f967aa7905d5e71a583d1af2a3dd1942cb512f885a6889b98106cfd75d934c922358d5b061a2419bd7e54d377b1cfb400c64fc471b9fb667bf4c22e5138eeab5eb79a14becda4fd98685f57c28aba37d272f893c18393b287a19394d527cb"
         }
       ]
     },
@@ -138,10 +141,33 @@
       "id": 5,
       "by": "ungmo2",
       "likeCount": 0,
-      "content": "Angular Essentials 출시. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero enim voluptatibus perferendis optio quasi deleniti saepe, maiores hic obcaecati molestiae, ipsam officia dolorem, dolores excepturi itaque necessitatibus consequatur quo assumenda.",
+      "content": "Angular Essentials 출시.",
       "imgList": [
         {
           "src": "https://poiemaweb.com/img/angular-essentials.png"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "by": "Food",
+      "likeCount": 0,
+      "content": "맛있는 음식 사진 무료 제공!",
+      "imgList": [
+        {
+          "src": "https://cdn.pixabay.com/photo/2010/12/13/10/05/background-2277__340.jpg"
+        },
+        {
+          "src": "https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305__340.jpg"
+        },
+        {
+          "src": "https://cdn.pixabay.com/photo/2017/01/11/11/33/cake-1971552__340.jpg"
+        },
+        {
+          "src": "https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590__340.jpg"
+        },
+        {
+          "src": "https://cdn.pixabay.com/photo/2016/03/05/22/08/beef-1239187__340.jpg"
         }
       ]
     }

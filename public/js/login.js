@@ -290,12 +290,11 @@ function loginDomNodeSettings() {
   autoLogin();
 }
 
-function loginInit() {
+export default function loginInit() {
   loginDomNodeSettings();
-
 }
 // !!지우지 말것!!
 // export default function userInfoconnect() {
 //   return userInfo;
 // }
-loginInit();
+// loginInit();
