@@ -227,6 +227,7 @@ header .cam-logo label {
   display: flex;
   width: 80px;
   justify-content: space-between;
+  margin-right: 15px;
 }
 
 .user-name-state {
@@ -234,6 +235,7 @@ header .cam-logo label {
   font-weight: 700;
   line-height: 20px;
   size: 18px;
+  margin-right: 6px;
 
 }
 
@@ -309,6 +311,7 @@ svg {
   background: #fff;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid rgba(56, 56, 56, 0.667);
 }
 
 .post-container .post-card .post-imgbox {
@@ -360,6 +363,8 @@ svg {
 .post-container .post-card .post-content {
   width: 100%;
   padding: 6px 14px 14px;
+  border: none;
+  height: auto;
 }
 
 .post-container .post-card .post-content .post-icon-container {
@@ -408,6 +413,7 @@ svg {
   width: 32px;
   height: 32px;
   margin-right: 10px;
+  border-radius: 50%;
 }
 
 .count,

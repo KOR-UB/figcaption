@@ -85,7 +85,12 @@ function feedDomNodeSettings() {
       case 'mark':
       case "mark active":
         console.log("북마크");
-        break;
+      break;
+      case 'plus-text':
+        const longTextContent = e.target.parentNode.nextElementSibling;
+          longTextContent.style.height = longTextContent.scrollHeight + "px";
+          e.target.remove();
+      break;
     }
   }
 
@@ -165,7 +170,11 @@ function postRender(board) {
 
   $postCard.id = board.id; //li에 id를 board에서 가져온 id로 재할당
 
-  $profile.src = 'https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=ZMRBdU8i2AoAX_wbci2&oh=12c3cd55d80ceadd2d32df292f236937&oe=5F13AC8F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2'; //프로필 이미지 경로
+  if(board.by === "ungmo2") { //프로필 이미지 경로
+    $profile.src = "https://avatars1.githubusercontent.com/u/5020875?s=64&v=4";
+  } else {
+    $profile.src = 'https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=ZMRBdU8i2AoAX_wbci2&oh=12c3cd55d80ceadd2d32df292f236937&oe=5F13AC8F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2'; 
+  }
   $postNickName.textContent = board.by; //보드를 게시한 유저 닉네임 할당
   $postHeader.appendChild($profile);
   $postHeader.appendChild($postNickName);

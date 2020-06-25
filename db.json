@@ -136,12 +136,12 @@
     },
     {
       "id": 5,
-      "by": "맹구",
+      "by": "ungmo2",
       "likeCount": 0,
-      "content": "lorem",
+      "content": "Angular Essentials 출시. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero enim voluptatibus perferendis optio quasi deleniti saepe, maiores hic obcaecati molestiae, ipsam officia dolorem, dolores excepturi itaque necessitatibus consequatur quo assumenda.",
       "imgList": [
         {
-          "src": "../img/brand1.jpg"
+          "src": "https://poiemaweb.com/img/angular-essentials.png"
         }
       ]
     }
