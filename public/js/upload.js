@@ -10,6 +10,11 @@ const $btnFile = document.querySelector('.btn-img-file');
 const $postMsg = document.querySelector('.post-warning-msg');
 const $btnOk = document.querySelector('.btn-ok');
 const $postContent = document.querySelector('.post-content');
+const $slideControl = document.querySelector('.slide-control');
+const $slideControlPrev = document.querySelector('.slide-control .prev');
+const $slideControlNext = document.querySelector('.slide-control .next');
+
+let slideBtnCnt = 0;
 // const $removePost = document.querySelector('.removePost')
 let fileList = [];
 // let userInfo;
@@ -46,11 +51,9 @@ $btnFile.addEventListener('change', (e) => {
     alert('이미지 크기를 초과했습니다.')
     return;
   }
-
   fileList = [...fileList, ...e.target.files];
   console.log('체인지 이벤트 확인');
   console.log(fileList);
-
   $postArea1.onclick = e => {
     if (!e.target.matches('.removePost')) return;
     console.log('온클릭 이벤트 확인');
@@ -62,9 +65,13 @@ $btnFile.addEventListener('change', (e) => {
     console.log('필터 지나온 지점');
     console.log(fileList);
     checkImgLength();
+    // 슬라이드
+    makeImgSlide(e);
+    $slideControlPrev.click();
   }
   checkImgLength();
   handleFiles([...e.target.files]);
+  $slideControlNext.classList.remove('hidden');
 })
 
 //버튼 누르면 삭제됨
@@ -104,9 +111,40 @@ function handleFiles(files) {
       };
     })(postImg);
     reader.readAsDataURL(file);
-
   }
 }
+
+
+function makeImgSlide(e) {
+  if (e.target.className === 'prev') {
+    --slideBtnCnt;
+    $postArea1.setAttribute('style', `transform: translateX(-${140 * slideBtnCnt}px)`);
+    console.log(slideBtnCnt);
+  }
+  if (e.target.className === 'next') {
+    ++slideBtnCnt;
+    $postArea1.setAttribute('style', `transform: translateX(-${140 * slideBtnCnt}px)`);
+  }
+  // 버튼 노출
+  let slideLength = $postArea1.querySelectorAll('.slide').length;
+  // < 불가능
+  if (slideBtnCnt <= 0 || slideLength > 2) {
+    $slideControlPrev.classList.add('hidden');
+    $slideControlNext.classList.remove('hidden');
+  }
+  // < > 둘다가능
+  if (slideBtnCnt > 0) {
+    $slideControlPrev.classList.remove('hidden');
+    $slideControlNext.classList.remove('hidden');
+  }
+  // > 불가능
+  if (slideBtnCnt === 5 || (slideLength - 3) < slideBtnCnt) {
+    $slideControlNext.classList.add('hidden');
+  }
+}
+$slideControl.onclick = e => {
+  makeImgSlide(e);
+};
 
 function _idGenerator() {
   return postBoards.length ? Math.max( ...postBoards.map(board => board.id)) + 1 : 1;
