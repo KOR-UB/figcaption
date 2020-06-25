@@ -212,8 +212,7 @@ function postRender(board) {
   $postCard.appendChild($postImgContainer);
   $postCard.appendChild($postContent);
 
-  $postContainer.appendChild($postCard);
-  // console.log();
+  $postContainer.prepend($postCard);
 }
 async function getUser() {
   userInfo = await axios.get('/userDatas')
@@ -226,7 +225,7 @@ async function getBoard() {
   postBoards = await axios.get('/boardDatas') //보드 데이터 가져와서 할당
   .then(res => res.data)
   .catch(err => console.error(err));
-  postBoards.sort((a, b) => b.id - a.id); //최신순 정렬
+  // postBoards.sort((a, b) => b.id - a.id); //최신순 정렬
   postBoards.forEach(board => { 
     slidePos.push(0); //보드 개수만큼 컨트롤러를 제어하는 배열에 0값을 추가 (각 보드 좌표값)
     postRender(board); //보드를 그려주는 Render 함수 호출 
