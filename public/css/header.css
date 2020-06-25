@@ -156,7 +156,7 @@ body.error-login {
     height: 40px;
     border-radius: 50%;
     box-shadow: 0 0 10px #69dceb;
-    background: linear-gradient(#f13070, #f1f1f1,  #03f4b8);
+    background: linear-gradient(#508de9, #f1f1f1,  #03f4b8);
 }
 @keyframes loadingAnim
 {

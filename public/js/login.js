@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 // import feedInit from './feed';
-let userInfo; //유저 정보가 바뀔때 그 정보를 재할당 해주세요~
-//예를 들어 좋아요를 누를 때, 북마크를 누를 때, 게시글을 작성할 때, 로그인을 했을 때 등등 데이터베이스에 요청을 보낸 후 재할당 해 주세요! 26~29번 줄을 참고하셔도 좋아요!
+let userInfo;
 
 const USER_KEY = 'Token';
 let loginKey = '';
@@ -23,7 +22,6 @@ async function userKeyGenerator() {
     .then(res => res.data)
     .then(users => users.find(user => user.loginCheck === localStorage.getItem(USER_KEY)))
     .catch(err => console.error(err));
-  userInfo.loginCheck = loginKey;
   userInfo = await axios.patch(`/userDatas/${userInfo.id}`, userInfo);
 }
 async function keyPass() {
@@ -301,27 +299,9 @@ function loginDomNodeSettings() {
       loginCheck,
       boardsCount: 0,
       marksCount: 0,
-      boards: [{
-        id: 0,
-        likeCount: 0,
-        likeCheck: false,
-        markCheck: false,
-        content: '',
-        createTime: {
-          day: '',
-          h: '',
-          m: '',
-          s: ''
-        },
-        imgList: [{
-          id: 0,
-          src: ''
-        }],
-        hashList: [{
-          id: 0,
-          value: ''
-        }]
-      }]
+      readBoards: [
+
+      ]
     }
     return payload;
   }

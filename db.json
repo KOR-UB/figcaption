@@ -8,17 +8,29 @@
       "nickName": "ub",
       "loginCheck": "test",
       "boardsCount": 0,
-      "marksCount": 0
+      "marksCount": 0,
+      "likeCheck": false,
+      "markCheck": false
     },
     {
       "email": "yyb97@naver.coa",
       "password": "voTmdnjem12#",
-      "userName": "PingPong",
+      "userName": "윤유비",
       "nickName": "Nince",
-      "loginCheck": "iX4cbkoQoqB7kA1J",
+      "loginCheck": "UhzBXIXFoglf82rM",
       "boardsCount": 0,
       "marksCount": 0,
       "id": 1
+    },
+    {
+      "email": "yyb97@naver.cox",
+      "password": "voTmdnjem12#",
+      "userName": "윤유비",
+      "nickName": "Nince2",
+      "loginCheck": "fIL88NiLWkInz1D0",
+      "boardsCount": 0,
+      "marksCount": 0,
+      "id": 2
     }
   ],
   "hashTags": [
@@ -32,8 +44,6 @@
       "id": 1,
       "by": "",
       "likeCount": 0,
-      "likeCheck": false,
-      "markCheck": false,
       "content": "lorem",
       "imgList": [
         {
@@ -50,6 +60,79 @@
         },
         {
           "src": "../img/brand3.jpg"
+        }
+      ],
+      "readUser": {
+        "userId": 1,
+        "like": true
+      }
+    },
+    {
+      "id": 2,
+      "by": "",
+      "likeCount": 0,
+      "content": "lorem",
+      "imgList": [
+        {
+          "src": "../img/brand1.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "by": "",
+      "likeCount": 0,
+      "content": "lorem",
+      "imgList": [
+        {
+          "src": "../img/brand1.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "by": "",
+      "likeCount": 0,
+      "content": "lorem",
+      "imgList": [
+        {
+          "src": "../img/brand1.jpg"
+        },
+        {
+          "src": "../img/brand2.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "by": "",
+      "likeCount": 0,
+      "content": "lorem",
+      "imgList": [
+        {
+          "src": "../img/brand1.jpg"
+        }
+      ],
+      "readUser": [
+        {
+          "userId": 1,
+          "like": false,
+          "mark": false
         }
       ]
     }
