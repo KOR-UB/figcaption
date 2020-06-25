@@ -26,19 +26,26 @@ function checkImgLength() {
   if (!fileList.length) {
     $postMsg.textContent = 'No files selected!';
     $btnFileWrap.classList.remove("btn-img-max");
+    $btnOk.disabled = true;
   }
   if (fileList.length) {
     $postMsg.textContent = '';
+    $btnOk.disabled = false;
     $btnFileWrap.classList.remove("btn-img-max");
   }
   if (fileList.length === 5) {
-    $btnFileWrap.disabled = true;
+    $btnFileWrap.disabled = false;
     $btnFileWrap.classList.add("btn-img-max");
     $postMsg.textContent = '최대 5개의 사진을 포함할 수 있습니다.';
   }
 }
 checkImgLength();
 $btnFile.addEventListener('change', (e) => {
+  const size = e.target.files[0].size;
+  if(size > 1000000) {
+    alert('이미지 크기를 초과했습니다.')
+    return;
+  }
 
   fileList = [...fileList, ...e.target.files];
   console.log('체인지 이벤트 확인');
@@ -67,10 +74,8 @@ let postList
 let removeList
 
 function handleFiles(files) {
-
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
-
     //업로드 알람버튼 타입,경고 
     if (!file.type.startsWith('image/')) {
       continue
@@ -103,6 +108,15 @@ function handleFiles(files) {
   }
 }
 
+function _idGenerator() {
+  return postBoards.length ? Math.max( ...postBoards.map(board => board.id)) + 1 : 1;
+}
+function _defaultHandler() {
+  document.querySelectorAll("li.slide").forEach(item => {
+    item.classList.contains('plus') ? true : item.remove();
+  });
+  $postContent.value = '';
+}
 let _imgList = []
 $btnOk.onclick = () => {
   document.querySelectorAll('.newPreview').forEach(item => {
@@ -111,12 +125,16 @@ $btnOk.onclick = () => {
     });
   })
   const payload = {
+    id: _idGenerator(),
     by: userInfo.nickName,
     likeCount: 0,
     content: $postContent.value,
     imgList: _imgList
   }
-  axios.post('/boardDatas', payload)
+  axios.post('/boardDatas', payload);
+  postRender(payload);
+  _defaultHandler();
+  togglePopup();
 }
 
 
