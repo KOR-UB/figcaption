@@ -1,6 +1,4 @@
 /* eslint-disable no-undef */
-// const $header = document.querySelector('header');
-// const $main = document.querySelector('main');
 const $postAdd = document.querySelector('.post-add');
 const $post = document.querySelector('.post');
 const $btnCancle = document.querySelector('.btn-cancle');
@@ -15,9 +13,7 @@ const $slideControlPrev = document.querySelector('.slide-control .prev');
 const $slideControlNext = document.querySelector('.slide-control .next');
 
 let slideBtnCnt = 0;
-// const $removePost = document.querySelector('.removePost')
 let fileList = [];
-// let userInfo;
 
 async function getUser() {
   userInfo = await axios.get('/userDatas')
