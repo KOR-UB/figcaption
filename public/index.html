@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/post-style.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <!-- <script src="js/upload.js" defer></script> -->
+  <script src="js/upload.js" defer></script>
+  <!-- <script defer src="./dist/js/bundle.js"></script> -->
   <!-- <script src="js/login.js" defer></script> -->
-  <!-- <script src="js/feed.js" defer></script> -->
+  <script src="js/feed.js" defer></script>
   <title>Figcaption</title>
 </head>
 
@@ -63,7 +64,6 @@
   </header>
   <main>
     <ul class="post-container">
-      <!-- 게시물 들어올 공간 -->
     </ul>
     <div class="create-post post-add">
       <span class="a11y-hidden">게시글 추가 버튼</span>
@@ -78,7 +78,6 @@
           <li class="slide plus">
             <label for="post-btn-img" class="btn-img" aria-label="이미지 업로드">+</label>
             <input id="post-btn-img" type="file" class="btn-img-file a11y-hidden">
-
           </li>
           <!-- base64 형식 이미지 -->
 
@@ -106,7 +105,6 @@
       </div>
     </div>
   </main>
-  <script defer src="./dist/js/bundle.js"></script>
   <script>
     window.onload = () => {
       document.querySelector(".page-load").remove();
