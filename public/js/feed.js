@@ -210,7 +210,7 @@ function postRender(board) {
   $heartText.appendChild($count);
   $nick.textContent = board.by; //닉네임
   $postTextContainer.appendChild($nick);
-  $hash.textContent = " #hash"; //해시
+  // $hash.textContent = " #hash"; //해시
   $plusText.textContent = ' 더 보기';
   $nick.appendChild($hash);
   $nick.appendChild($plusText);

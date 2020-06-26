@@ -153,13 +153,15 @@ export default function uploadInit() {
   function _idGenerator() {
     return postBoards.length ? Math.max( ...postBoards.map(board => board.id)) + 1 : 1;
   }
+  let _imgList = []
   function _defaultHandler() {
+    fileList = [];
+    _imgList = [];
     document.querySelectorAll("li.slide").forEach(item => {
       item.classList.contains('plus') ? true : item.remove();
     });
     $postContent.value = '';
   }
-  let _imgList = []
   $btnOk.onclick = () => {
     document.querySelectorAll('.newPreview').forEach(item => {
       _imgList.push({
