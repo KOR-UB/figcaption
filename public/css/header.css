@@ -532,11 +532,12 @@ svg {
   font-weight: normal;
   cursor: pointer;
   scroll-behavior: smooth;
+  display: none;
 }
 
 .long-text {
   overflow: hidden;
-  height: 0;
+  height: auto;
   transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   scroll-behavior: smooth;
 }
