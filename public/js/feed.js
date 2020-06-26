@@ -204,8 +204,8 @@ function postRender(board) {
 
   $postContent.appendChild($postIconContainer);
 
-  $heartText.textContent = `좋아요`;
-  $count.textContent = ` ${board.likeCount}개`; //좋아요 개수
+  // $heartText.textContent = `좋아요`;
+  // $count.textContent = ` ${board.likeCount}개`; //좋아요 개수
   $postTextContainer.appendChild($heartText);
   $heartText.appendChild($count);
   $nick.textContent = board.by; //닉네임
