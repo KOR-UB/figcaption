@@ -63,18 +63,12 @@ export default function uploadInit() {
     //   return;
     // }
     fileList = [...fileList, ...e.target.files];
-    console.log('체인지 이벤트 확인');
-    console.log(fileList);
     $postArea1.onclick = e => {
       if (!e.target.matches('.removePost')) return;
-      console.log('온클릭 이벤트 확인');
       e.target.parentNode.remove();
       fileList = fileList.filter(file => {
-        console.log(file.name);
         return file.name != e.target.id;
       });
-      console.log('필터 지나온 지점');
-      console.log(fileList);
       checkImgLength();
       // 슬라이드
       makeImgSlide(e);
@@ -130,7 +124,6 @@ export default function uploadInit() {
     if (e.target.className === 'prev') {
       --slideBtnCnt;
       $postArea1.setAttribute('style', `transform: translateX(-${140 * slideBtnCnt}px)`);
-      console.log(slideBtnCnt);
     }
     if (e.target.className === 'next') {
       ++slideBtnCnt;
@@ -182,9 +175,6 @@ export default function uploadInit() {
     }
     axios.post('/boardDatas', payload);
     window.location.reload();
-    // postRender(payload);
-    // _defaultHandler();
-    // togglePopup();
   }
   
   

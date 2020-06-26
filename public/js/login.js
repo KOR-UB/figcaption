@@ -29,7 +29,6 @@ async function keyPass() {
     .then(res => res.data)
     .then(users => users.find(user => user.loginCheck === localStorage.getItem(USER_KEY)))
     .catch(err => console.error(err));
-  console.log(userInfo);
 }
 
 function loginDomNodeSettings() {
@@ -59,7 +58,6 @@ function loginDomNodeSettings() {
 
   // 이메일 형식체크
   function emailPatternChk(e, input) {
-    console.log('blur : 블러이벤트 일어남');
     $loginSignIn.disabled = true;
     $signUpCheck.disabled = true;
     // 엔터 누를때만 깜빡깜빡 나타나는 현상
@@ -89,12 +87,10 @@ function loginDomNodeSettings() {
 
   // 비밀번호 형식체크
   function pwPatternChk(e, input) {
-    console.log('keyup : 이벤트 일어남');
     $loginSignIn.disabled = true;
     $signUpCheck.disabled = true;
 
     if (!input.value.match(passwordPattern) || !input.value) {
-      console.log('비밀번호 형식 일치하지 않음');
       input.nextElementSibling.setAttribute('style', 'display: block;');
       input.nextElementSibling.textContent = '영문/숫자/특수문자를 조합하여 8자리 이상 입력해주세요.';
     }else {
@@ -134,7 +130,6 @@ function loginDomNodeSettings() {
       .then(res => res.data)
       .then(users => {
         users.every(user => {
-          console.log('1');
           // 아이디 false
           // 0623 :: 민지 수정 (find할 시, 이메일이 있는경우에도 비밀번호 틀렸을때 존재하지않는 이메일이라뜸)
           if (user.email !== $email) {
@@ -144,7 +139,6 @@ function loginDomNodeSettings() {
           }
         });
         users.find(user => {
-          console.log('2');
           // 아이디 true / 비밀번호 false
           if (user.email === $email && user.password !== $pw) {
             $emailWarning.setAttribute('style', 'visibility:hidden;');
@@ -156,18 +150,12 @@ function loginDomNodeSettings() {
 
           // 아이디 true / 비밀번호 true
           if (user.email === $email && user.password === $pw) {
-            console.log('3');
-            console.log('로그인 성공');
             $emailWarning.setAttribute('style', 'visibility:hidden;');
             $pwWarning.setAttribute('style', 'visibility:hidden;');
             const loadedUser = localStorage.getItem(USER_KEY);
-            console.log(loadedUser);
             if (loadedUser === null) {
-              console.log('4');
-              // userKeyGenerator();
               localStorage.setItem(USER_KEY, user.loginCheck);
             } else {
-              console.log('5');
               keyPass();
             }
             removeLoginPage();
@@ -176,16 +164,9 @@ function loginDomNodeSettings() {
 
       })
       .catch(err => console.error(err));
-      console.log('userInfo', userInfo);
-    // if (!userInfo) {
-    //   console.log(userInfo);
-    // } else {
-    //   console.log('로그인 성공');
-    // }
   }
 
   function signUpHandler(e) {
-    console.log('join on');
     e.preventDefault();
     console.dir(e);
     const $email = e.target[0].value;
@@ -198,7 +179,6 @@ function loginDomNodeSettings() {
 
     //회원가입 시도할 때 로직    
     async function joinKeyPass() {
-      console.log('joinKeyPass');
       let userEamilFind = [];
       let userNickFind = [];
 
@@ -216,7 +196,6 @@ function loginDomNodeSettings() {
       }))
       .catch(err => console.error(err));
       
-      console.log('uf', userEamilFind);
       if (userEamilFind.length > 0) {
         $emailWarning.setAttribute('style', 'display: block;');
         $emailWarning.textContent = '중복된 아이디 입니다.';
@@ -226,7 +205,6 @@ function loginDomNodeSettings() {
         $nicknameWarning.textContent = '중복된 닉네임 입니다.';
         return;
       } else {
-        console.log('else');
         const loadedUser = localStorage.getItem(USER_KEY);
         if (loadedUser === null) {
           userKeyGenerator();

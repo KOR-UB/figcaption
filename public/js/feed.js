@@ -84,10 +84,6 @@ function feedDomNodeSettings() {
         //   $heartAnim.remove();
         // },1500)
         break;
-      case 'mark':
-      case "mark active":
-        console.log("북마크");
-      break;
       case 'plus-text':
         // const longTextContent = e.target.parentNode.nextElementSibling;
         // longTextContent.style.height = longTextContent.scrollHeight + "px";
@@ -126,7 +122,6 @@ function createNode(tag, _class = '') {
 
 function postRender(board) {
   const { imgList } = board;
-  console.log(imgList);
   
   // const { nickName, boards } = user;
   // const { likeCheck } = boards;
@@ -249,8 +244,6 @@ async function getBoard() {
 }
 // export default 
 export default  async function feedInit() {
-  // userInfo = userInfoConnect();
-  // console.log(userInfo);
   getUser();
   getBoard();
   feedDomNodeSettings();
