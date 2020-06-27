@@ -164,16 +164,22 @@ export default function uploadInit() {
   }
   $btnOk.onclick = () => {
     document.querySelectorAll('.newPreview').forEach(item => {
-      _imgList.push({
+      _imgList = [..._imgList, {
         src: item.src
-      });
+      }];
     })
     const payload = {
       id: _idGenerator(),
       by: userInfo.nickName,
       likeCount: 0,
       content: $postContent.value,
-      imgList: _imgList
+      imgList: _imgList,
+      likeList: [
+        {
+          user: "",
+          check: false
+        }
+      ]
     }
     axios.post('/boardDatas', payload);
     window.location.reload();

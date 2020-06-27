@@ -79,6 +79,12 @@
         {
           "src": "//ww.namu.la/s/32ba23f114a74427117b1e89a43ac8aa6c7cb4e2c57ce4a0ea33bef0014370671d2e361cb8d8bfcbf3a51b041569e4791fc35c9ea87cecc443adeb1db3a4ab9c7fbc2204601e50d3908b4ddec8be50951740584388dbe8edfc5b56a74ee32481f09084bf4a05a08d691130abee47160c"
         }
+      ],
+        "likeList": [
+        {
+          "user": "",
+          "check": false
+        }
       ]
     },
     {
@@ -99,6 +105,12 @@
         {
           "src": "https://ww.namu.la/s/cc778fbc66b2c939c175714eb407dff1deaaffeb931305f9eebfce19d162fbc0ea5380b34a5e2f9c9ab0570f5ffc6beb3ca81bcd9d220b046ed98cc4b55b0853dd2ba9a5c19b5c0f4ebee3ddab06e67ca1525e895786f65dcc985adbc1944257"
         }
+      ],
+      "likeList": [
+        {
+          "user": "",
+          "check": false
+        }
       ]
     },
     {
@@ -115,6 +127,12 @@
         },
         {
           "src": "https://www.10wallpaper.com/wallpaper/medium/1806/Ori_and_the_Will_of_the_Wisps_2019_xbox_Game_medium.jpg"
+        }
+      ],
+      "likeList": [
+        {
+          "user": "",
+          "check": false
         }
       ]
     },
@@ -133,6 +151,12 @@
         {
           "src": "https://ww.namu.la/s/0e81a3b081a7af16b3d7fe6df00e2f271e9f967aa7905d5e71a583d1af2a3dd1942cb512f885a6889b98106cfd75d934c922358d5b061a2419bd7e54d377b1cfb400c64fc471b9fb667bf4c22e5138eeab5eb79a14becda4fd98685f57c28aba37d272f893c18393b287a19394d527cb"
         }
+      ],
+      "likeList": [
+        {
+          "user": "",
+          "check": false
+        }
       ]
     },
     {
@@ -143,6 +167,12 @@
       "imgList": [
         {
           "src": "https://poiemaweb.com/img/angular-essentials.png"
+        }
+      ],
+      "likeList": [
+        {
+          "user": "",
+          "check": false
         }
       ]
     },
@@ -166,6 +196,29 @@
         },
         {
           "src": "https://cdn.pixabay.com/photo/2016/03/05/22/08/beef-1239187__340.jpg"
+        }
+      ],
+      "likeList": [
+        {
+          "user": "ub",
+          "check": true
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "by": "ub",
+      "likeCount": 0,
+      "content": "",
+      "imgList": [
+        {
+          "src": "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABkAAD/4QMvaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzA2NyA3OS4xNTc3NDcsIDIwMTUvMDMvMzAtMjM6NDA6NDIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEMzIxMDY5NUVCNTYxMUU5ODg2OUJEODRBRjI3NDJBOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEMzIxMDY5NkVCNTYxMUU5ODg2OUJEODRBRjI3NDJBOCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQzMjEwNjkzRUI1NjExRTk4ODY5QkQ4NEFGMjc0MkE4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQzMjEwNjk0RUI1NjExRTk4ODY5QkQ4NEFGMjc0MkE4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQICAgICAgICAgICAwMDAwMDAwMDAwEBAQEBAQECAQECAgIBAgIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMD/8AAEQgAyADIAwERAAIRAQMRAf/EAF4AAQEBAAAAAAAAAAAAAAAAAAAKCwEBAAAAAAAAAAAAAAAAAAAAABABAAAHAQABAgcAAAAAAAAAAIioyOhJaQoaFxUYFCREZZgZOhEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8Az/wAAAAAAAAAAAX+cMeUSCargF/gAAAAAAAAAAAMAcAAAAAAAAAAAF/nDHlEgmq4Bf4AAAAAAAAAAADAHAAAAAAAAAAABf5wx5RIJquAX+AAAAAAAAAAAAwBwAAAAAAAAAAAX+cMeUSCargF/gAAAAAAAAAAAMAcAAAAAAAAAAAF/nDHlEgmq4Bf4AAAAAAAAAAADAHAAAAAAAAAAABf5wx5RIJquAX+AAAAAAAAAAAAwBwAAAAAAAAAAAX+cMeUSCargF/gAAAAAAAAAAAMAcAAAAAAAAAAAF/nDHlEgmq4Bf4AAAAAAAAAAADAHAAAAAAAAAAABf5wx5RIJquAX+AAAAAAAAAAAAwBwAAAAAAAAAAAX+cMeUSCargF/gAAAAAAAAAAAMAcAAAAAAAAAAAF/nDHlEgmq4Bf4AAAAAAAAAAADAHAAAAAAAAAAABf5wx5RIJquAX+AAAAAAAAAAAAgD8Me0SSa7gDwx7RJJruAPDHtEkmu4A8Me0SSa7gDwx7RJJruAPDHtEkmu4A8Me0SSa7gDwx7RJJruAPDHtEkmu4A8Me0SSa7gDwx7RJJruAPDHtEkmu4A/xdbJv7JoOvhj7Ov5T/IvyL90/7F9I+hfrfxv5QHuc1dzs2jge5zV3OzaOB7nNXc7No4Huc1dzs2jge5zV3OzaOB7nNXc7No4Huc1dzs2jge5zV3OzaOB7nNXc7No4Huc1dzs2jge5zV3OzaOB7nNXc7No4L/AAAAAAAAAAAAQB9zmLuNmkcEAYAAAAAAAAAAAN/gAAAAAAAAAAAEAfc5i7jZpHBAGAAAAAAAAAAADf4AAAAAAAAAAABAH3OYu42aRwQBgAAAAAAAAAAA3+AAAAAAAAAAAAQB9zmLuNmkcEAYAAAAAAAAAAAN/gAAAAAAAAAAAEAfc5i7jZpHBAGAAAAAAAAAAADf4AAAAAAAAAAABAH3OYu42aRwQBgAAAAAAAAAAA3+AAAAAAAAAAAAQB9zmLuNmkcEAYAAAAAAAAAAAN/gAAAAAAAAAAAEAfc5i7jZpHBAGAAAAAAAAAAADf4AAAAAAAAAAABAH3OYu42aRwQBgAAAAAAAAAAA3+AAAAAAAAAAAAQB9zmLuNmkcEAYAAAAAAAAAAAN/gAAAAAAAAAAAEAfc5i7jZpHBAGAAAAAAAAAAADf4AAAAAAAAAAABAH3OYu42aRwQBgAAAAAAAAAAA//Z"
+        }
+      ],
+      "likeList": [
+        {
+          "user": "",
+          "check": false
         }
       ]
     }
