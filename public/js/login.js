@@ -227,8 +227,6 @@ function loginDomNodeSettings() {
       loginCheck,
       boardsCount: 0,
       marksCount: 0,
-      readBoards: [
-      ]
     }
     return payload;
   }

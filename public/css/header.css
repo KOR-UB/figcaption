@@ -3,11 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   min-height: 100vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
 }
-
+i {
+  pointer-events: none;
+}
 body.error-login {
   display: flex;
   justify-content: center;
@@ -105,12 +108,14 @@ body.error-login {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
   transition: 0.5s;
 }
-
+.return-login-form:focus,
+.login-page .sign-up:focus
 .return-login-form:hover,
 .login-page .sign-up:hover {
   box-shadow: 0px 5px 5px 2px rgba(119, 235, 255, 0.2);
 }
-
+.login-page .sign-up-check:enabled:focus::before,
+.login-page .sign-in:enabled:focus::before
 .login-page .sign-up-check:enabled:hover::before,
 .login-page .sign-in:enabled:hover::before {
   left: 100%;
@@ -318,6 +323,7 @@ svg {
   color: #0095f6;
 }
 .post-container {
+  list-style: none;
   width: 100%;
   /* min-height: 500vh; */
   overflow: hidden;
@@ -335,10 +341,19 @@ svg {
   padding: 14px;
   background: #fff;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 0.5px solid #ccc;
 }
-
+.post-container .post-card .post-header .profile-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-container .post-card .post-header .post-option {
+  padding: 10px;
+  font-size: 1.5em;
+}
 .post-container .post-card .post-imgbox {
   position: relative;
   left: 0;
@@ -352,6 +367,7 @@ svg {
   position: relative;
   width: 100%;
   border-bottom: 0.5px solid #ccc;
+  overflow: hidden;
 }
 
 .post-container .post-card .post-img-container .slide-controller {
@@ -391,7 +407,6 @@ svg {
   object-fit: cover;
   width: 20%;
   min-height: 360px;
-  max-height: 450px;
 }
 
 .post-container .post-card .post-content {
@@ -532,13 +547,12 @@ svg {
   font-weight: normal;
   cursor: pointer;
   scroll-behavior: smooth;
-  display: none;
 }
 
 .long-text {
   margin: 6px 0;
   overflow: hidden;
-  height: auto;
+  height: 0;
   transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   scroll-behavior: smooth;
 }
@@ -547,4 +561,125 @@ svg {
 .msg {
   margin-right: 8px;
   outline: none;
+}
+.delete-pop {
+  display: none;
+}
+.delete-pop.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-pop .delete-modal {
+  width: 70%;
+  height: 20%;
+  background: #fff;
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-pop .delete-modal button {
+  margin: 0 5px;
+  padding: 10px 35px;
+  border-radius: 0.5em;
+  background: rgb(78, 111, 194);
+  color: #fff;
+  outline: none;
+  transition: 0.5s;
+}
+.delete-pop .delete-modal button:hover,
+.delete-pop .delete-modal button:focus {
+  color: #000;
+  background: #fff;
+  box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.116);
+}
+@media (max-height: 500px) {
+  .post-container .post-card .post-imgbox img {
+    min-height: auto;
+  }
+  .post-container .post-card .post-header {
+    height: 20vh;
+  }
+  .delete-pop .delete-modal {
+    width: 70%;
+    height: 40%;
+    background: #fff;
+    border-radius: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 1400px) {
+  .icon-heart {
+    position: absolute;
+    top: -40px !important;
+  }
+  .post-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .post-container .post-card {
+    width: 23%;
+    min-height: 580px;
+    margin: 7px;
+    border: 0.5px solid rgb(156, 156, 156);
+  }
+  .post-container .post-card .post-header {
+    height: 7vh;
+  }
+  .post-container .post-card .post-imgbox {
+    height: 400px;
+  }
+}
+@media (min-width: 1070px) and (max-width: 1400px) {
+  .icon-heart {
+    position: absolute;
+    top: 0px !important;
+  }
+  .post-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .post-container .post-card {
+    width: 32%;
+    min-height: 330px;
+    margin: 7px;
+    border: 0.5px solid rgb(156, 156, 156);
+  }
+  .post-container .post-card .post-imgbox {
+    height: 400px;
+  }
+}
+@media (min-width: 850px) and (max-width: 1070px) {
+  .icon-heart {
+    position: absolute;
+    top: 0px !important;
+  }
+  .post-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .post-container .post-card {
+    width: 45%;
+    min-height: 330px;
+    margin: 7px;
+    border: 0.5px solid rgb(156, 156, 156);
+  }
+  .post-container .post-card .post-imgbox {
+    height: 400px;
+  }
 }

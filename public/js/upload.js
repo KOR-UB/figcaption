@@ -56,12 +56,12 @@ export default function uploadInit() {
   }
   checkImgLength();
   $btnFile.addEventListener('change', (e) => {
-    //얼럿은 한번만 동작하는 오류가 있다.
-    // const size = e.target.files[0].size;
-    // if(size > 1000000) {
-    //   alert('이미지 크기를 초과했습니다.')
-    //   return;
-    // }
+    const size = e.target.files[0].size;
+    if(size > 1000000) {
+      slideBtnCnt = 0;
+      alert('이미지 크기를 초과했습니다.');
+      return;
+    }
     fileList = [...fileList, ...e.target.files];
     $postArea1.onclick = e => {
       if (!e.target.matches('.removePost')) return;
@@ -76,7 +76,6 @@ export default function uploadInit() {
     }
     checkImgLength();
     handleFiles([...e.target.files]);
-    $slideControlNext.classList.remove('hidden');
   })
   
   //버튼 누르면 삭제됨
@@ -86,6 +85,14 @@ export default function uploadInit() {
   let removeList
   
   function handleFiles(files) {
+    if(fileList.length > 5) {
+      _defaultHandler();
+      checkImgLength();
+      alert('5개를 초과했습니다.');
+      return;
+    } else {
+      $slideControlNext.classList.remove('hidden');
+    }
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       //업로드 알람버튼 타입,경고 
@@ -142,7 +149,7 @@ export default function uploadInit() {
       $slideControlNext.classList.remove('hidden');
     }
     // > 불가능
-    if (slideBtnCnt === 5 || (slideLength - 3) < slideBtnCnt) {
+    if (slideBtnCnt === 5 || (slideLength - 2) < slideBtnCnt) {
       $slideControlNext.classList.add('hidden');
     }
   }
@@ -157,6 +164,8 @@ export default function uploadInit() {
   function _defaultHandler() {
     fileList = [];
     _imgList = [];
+    slideBtnCnt = 0;
+    checkImgLength();
     document.querySelectorAll("li.slide").forEach(item => {
       item.classList.contains('plus') ? true : item.remove();
     });

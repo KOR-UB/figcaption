@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/x-icon" href="./img/camera.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
     integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
@@ -17,7 +18,6 @@
   <!-- <script src="js/feed.js" defer></script> -->
   <title>Figcaption</title>
 </head>
-
 <body>
   <div class="page-load">
     <div class="loader">
@@ -89,8 +89,8 @@
           <p class="post-warning-msg"></p>
         </div>
         <div class="slide-control">
-          <button class="prev hidden">&lt;</button>
-          <button class="next hidden">&gt;</button>
+          <button type="button" class="prev hidden"><i class="fas fa-chevron-left"></i></button>
+          <button type="button" class="next hidden"><i class="fas fa-chevron-right"></i></button>
         </div>
 
         <textarea class="post-content" placeholder="문구 입력..."></textarea>
@@ -100,6 +100,12 @@
         </div> -->
         <button type="button" class="btn-cancle">취소</button>
         <button type="button" class="btn-ok" disabled>공유</button>
+      </div>
+    </div>
+    <div class="delete-pop">
+      <div class="delete-modal">
+          <button class="modal-close">취소</button>
+          <button class="delete-btn">삭제</button>
       </div>
     </div>
   </main>
