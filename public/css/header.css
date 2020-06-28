@@ -337,7 +337,7 @@ svg {
 
 .post-container .post-card .post-header {
   width: 100%;
-  height: 10vh;
+  height: 8vh;
   padding: 14px;
   background: #fff;
   display: flex;
@@ -661,6 +661,9 @@ svg {
   .post-container .post-card .post-imgbox {
     height: 400px;
   }
+  .post-container .post-card .post-header {
+    height: 7vh;
+  }
 }
 @media (min-width: 850px) and (max-width: 1070px) {
   .icon-heart {
@@ -678,6 +681,9 @@ svg {
     min-height: 330px;
     margin: 7px;
     border: 0.5px solid rgb(156, 156, 156);
+  }
+  .post-container .post-card .post-header {
+    height: 7vh;
   }
   .post-container .post-card .post-imgbox {
     height: 400px;

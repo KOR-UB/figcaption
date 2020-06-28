@@ -109,7 +109,6 @@ function feedDomNodeSettings() {
       case 'plus-text':
         const longTextContent = e.target.parentNode.nextElementSibling;
         longTextContent.style.height = longTextContent.scrollHeight + "px";
-        // longTextContent.parentNode.parentNode.scrollIntoView();
         e.target.remove();
       break;
       case 'post-option':
