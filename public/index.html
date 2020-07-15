@@ -1,119 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/x-icon" href="./img/camera.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
-    integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
-  <link rel="stylesheet" href="./normalize.css">
-  <link rel="stylesheet" href="./css/header.css">
-  <link rel="stylesheet" href="./css/post-style.css">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="./dist/js/bundle.js" defer></script>
-  <!-- <script src="js/upload.js" defer></script> -->
-  <!-- <script src="js/feed.js" defer></script> -->
-  <title>Figcaption</title>
-</head>
-<body>
-  <div class="page-load">
-    <div class="loader">
-      <span style="--i:1;"></span>
-      <span style="--i:2;"></span>
-      <span style="--i:3;"></span>
-      <span style="--i:4;"></span>
-      <span style="--i:5;"></span>
-      <span style="--i:6;"></span>
-      <span style="--i:7;"></span>
-    </div>
-    <svg>
-      <filter id="load-go">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-        <feColorMatrix values="
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="./img/camera.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/post-style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./dist/js/bundle.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+    <!-- <script src="js/upload.js" defer></script> -->
+    <!-- <script src="js/feed.js" defer></script> -->
+    <title>Figcaption</title>
+  </head>
+  <body>
+    <div class="page-load">
+      <div class="loader">
+        <span style="--i: 1;"></span>
+        <span style="--i: 2;"></span>
+        <span style="--i: 3;"></span>
+        <span style="--i: 4;"></span>
+        <span style="--i: 5;"></span>
+        <span style="--i: 6;"></span>
+        <span style="--i: 7;"></span>
+      </div>
+      <svg>
+        <filter id="load-go">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+          <feColorMatrix
+            values="
           1 0 0 0 0
           0 1 0 0 0
           0 0 1 0 0
           0 0 0 20 -10
-            " />
-      </filter>
-    </svg>
-  </div>
-  <header>
-    <div class="cam-logo">
-      <span class="file-cam"><img src="./img/camera.png" alt="카메라 아이콘"></span>
-      <h1 class="logo">figcaption</h1>
+            "
+          />
+        </filter>
+      </svg>
     </div>
-    <div class="my-info-container">
-      <p class="user-name-state"></p>
-      <button class="logout-btn">
-        Logout
-      </button>
-      <div class="logout-popup out-active">
-        <p>로그아웃하시겠습니까?</p>
-        <div class="logout-check">
-          <button class="logout-yes">Yes</button>
-          <button class="logout-no">No</button>
+    <header>
+      <div class="cam-logo">
+        <span class="file-cam"><img src="./img/camera.png" alt="카메라 아이콘" /></span>
+        <h1 class="logo">figcaption</h1>
+      </div>
+      <div class="my-info-container">
+        <p class="user-name-state"></p>
+        <button class="logout-btn">
+          Logout
+        </button>
+        <div class="logout-popup out-active">
+          <p>로그아웃하시겠습니까?</p>
+          <div class="logout-check">
+            <button class="logout-yes">Yes</button>
+            <button class="logout-no">No</button>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
-  <main>
-    <ul class="post-container">
-    </ul>
-    <div class="create-post post-add">
-      <span class="a11y-hidden">게시글 추가 버튼</span>
-      <i class="fas fa-pencil-alt"></i>
-    </div>
-    <div class="post">
-      <div class="post-add-container">
-        <h3 class="post-heading">새 게시물</h3>
-        <ul class="post-area1">
+    </header>
+    <main>
+      <ul class="post-container"></ul>
+      <div class="create-post post-add">
+        <span class="a11y-hidden">게시글 추가 버튼</span>
+        <i class="fas fa-pencil-alt"></i>
+      </div>
+      <div class="post">
+        <div class="post-add-container">
+          <h3 class="post-heading">새 게시물</h3>
+          <ul class="post-area1">
+            <!-- 추가인풋 -->
+            <li class="slide plus">
+              <label for="post-btn-img" class="btn-img" aria-label="이미지 업로드">+</label>
+              <input id="post-btn-img" type="file" class="btn-img-file a11y-hidden" />
+            </li>
+            <!-- base64 형식 이미지 -->
 
-          <!-- 추가인풋 -->
-          <li class="slide plus">
-            <label for="post-btn-img" class="btn-img" aria-label="이미지 업로드">+</label>
-            <input id="post-btn-img" type="file" class="btn-img-file a11y-hidden">
-          </li>
-          <!-- base64 형식 이미지 -->
-
-          <!-- <li class="slide">
+            <!-- <li class="slide">
             <img src="" alt="">
           </li> -->
-          <!-- 슬라이드 컨트롤러 -->
+            <!-- 슬라이드 컨트롤러 -->
+          </ul>
+          <div class="post-warning-box">
+            <p class="post-warning-msg"></p>
+          </div>
+          <div class="slide-control">
+            <button type="button" class="prev hidden"><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="next hidden"><i class="fas fa-chevron-right"></i></button>
+          </div>
 
-        </ul>
-        <div class="post-warning-box">
-          <p class="post-warning-msg"></p>
-        </div>
-        <div class="slide-control">
-          <button type="button" class="prev hidden"><i class="fas fa-chevron-left"></i></button>
-          <button type="button" class="next hidden"><i class="fas fa-chevron-right"></i></button>
-        </div>
-
-        <textarea class="post-content" placeholder="문구 입력..."></textarea>
-        <!-- <div class="post-area2">
+          <textarea class="post-content" placeholder="문구 입력..."></textarea>
+          <!-- <div class="post-area2">
           <p class="post-hash">해시태그 추가</p>
           <input type="text" class="hash-content" placeholder="  # 입력하세요..">
         </div> -->
-        <button type="button" class="btn-cancle">취소</button>
-        <button type="button" class="btn-ok" disabled>공유</button>
+          <button type="button" class="btn-cancle">취소</button>
+          <button type="button" class="btn-ok" disabled>공유</button>
+        </div>
       </div>
-    </div>
-    <div class="delete-pop">
-      <div class="delete-modal">
+      <div class="delete-pop">
+        <div class="delete-modal">
           <button class="modal-close">취소</button>
           <button class="delete-btn">삭제</button>
+        </div>
       </div>
-    </div>
-  </main>
-  <script>
-    window.onload = () => {
-      document.querySelector(".page-load").remove();
-    }
-  </script>
-</body>
-
+    </main>
+    <script>
+      window.onload = () => {
+        document.querySelector(".page-load").remove();
+      };
+    </script>
+  </body>
 </html>

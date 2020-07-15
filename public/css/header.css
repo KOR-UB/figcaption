@@ -5,7 +5,7 @@
 }
 body {
   min-height: 100vh;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
 }
 i {
@@ -109,14 +109,12 @@ body.error-login {
   transition: 0.5s;
 }
 .return-login-form:focus,
-.login-page .sign-up:focus
-.return-login-form:hover,
+.login-page .sign-up:focus .return-login-form:hover,
 .login-page .sign-up:hover {
   box-shadow: 0px 5px 5px 2px rgba(119, 235, 255, 0.2);
 }
 .login-page .sign-up-check:enabled:focus::before,
-.login-page .sign-in:enabled:focus::before
-.login-page .sign-up-check:enabled:hover::before,
+.login-page .sign-in:enabled:focus::before .login-page .sign-up-check:enabled:hover::before,
 .login-page .sign-in:enabled:hover::before {
   left: 100%;
 }
@@ -170,7 +168,7 @@ body.error-login {
 }
 
 .page-load .loader span::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: calc(50% - 20px);
@@ -251,7 +249,11 @@ header .cam-logo label {
   margin-right: 15px;
 }
 
-.user-name-state {font-weight: 700;line-height: 40px;margin-right: 6px;}
+.user-name-state {
+  font-weight: 700;
+  line-height: 40px;
+  margin-right: 6px;
+}
 
 .logout-btn {
   color: #a0a0a0;
@@ -279,7 +281,7 @@ header .cam-logo label {
   margin: 10px;
 }
 
-.logout-check>button {
+.logout-check > button {
   font-weight: bold;
   color: rgb(52, 120, 197);
   width: 70px;
@@ -316,6 +318,7 @@ svg {
   overflow: hidden;
   font-size: 2em;
   color: #1a777a;
+  cursor: pointer;
   box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.2);
   /* -webkit-box-reflect: below -2px linear-gradient(transparent,transparent,rgba(0,0,0,1)); */
 }
