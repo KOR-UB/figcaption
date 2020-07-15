@@ -29,14 +29,14 @@ function feedDomNodeSettings() {
   };
   function sliderHandler(e, posSet, length) {
     console.log(e);
-    const $imgBox = e.target.parentNode.previousElementSibling;
-    const $iconParent = $imgBox.parentNode.nextElementSibling;
-    const targetPos = $imgBox.getAttribute("data-pos");
-    $imgBox.setAttribute("data-pos", +targetPos + posSet);
+    const $curImgBox = e.target.parentNode.previousElementSibling;
+    const $iconParent = $curImgBox.parentNode.nextElementSibling;
+    const targetPos = $curImgBox.getAttribute("data-pos");
+    $curImgBox.setAttribute("data-pos", +targetPos + posSet);
     const pos = +targetPos + posSet;
-    const $curController = $imgBox.nextElementSibling;
+    const $curController = $curImgBox.nextElementSibling;
 
-    $imgBox.style.left = `${pos * 100}%`;
+    $curImgBox.style.left = `${pos * 100}%`;
 
     if (pos === 0) {
       $curController.querySelector(".slider-left-btn").style.visibility = "hidden";
@@ -51,22 +51,6 @@ function feedDomNodeSettings() {
     const $lightList = $iconParent.querySelectorAll(".item-light");
     $iconParent.querySelector(".active").classList.remove("active");
     $lightList[-pos].classList.add("active");
-
-    // const $sliderPosIcons = $PP.parentNode.nextElementSibling.querySelectorAll(".item-light");
-    // $sliderPosIcons[0].parentNode.querySelector(".active").classList.remove("active");
-    // $PP.style.left = `${pos * 100}%`;
-    // if (pos === 0) {
-    //   $PP.nextElementSibling.querySelector(".slider-left-btn").style.visibility = "hidden";
-    //   $PP.nextElementSibling.querySelector(".slider-right-btn").style.visibility = "visible";
-    // } else if (pos >= -(length - 1)) {
-    //   $PP.nextElementSibling.querySelector(".slider-left-btn").style.visibility = "visible";
-    //   $PP.nextElementSibling.querySelector(".slider-right-btn").style.visibility = "visible";
-    // } else {
-    //   $PP.nextElementSibling.querySelector(".slider-left-btn").style.visibility = "visible";
-    //   $PP.nextElementSibling.querySelector(".slider-right-btn").style.visibility = "hidden";
-    // }
-    // const $classNode = $sliderPosIcons[-pos];
-    // $classNode.classList.add("active");
   }
   async function touchHandler(e) {
     let $parentPreviouss;
