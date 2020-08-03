@@ -309,6 +309,18 @@ async function getBoard() {
     // slidePos = [...slidePos, 0]; //보드 개수만큼 컨트롤러를 제어하는 배열에 0값을 추가 (각 보드 좌표값)
     postRender(board); //보드를 그려주는 Render 함수 호출
   });
+  const grid = document.querySelector(".post-container");
+  const iso = new Isotope(grid, {
+    itemSelector: ".post-card",
+  });
+  gsap.from(".post-card", 1, {
+    y: -60,
+    opacity: 0,
+    ease: "power1",
+    stagger: {
+      amount: 1.5,
+    },
+  });
 }
 // export default
 export default async function feedInit() {
